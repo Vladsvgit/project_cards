@@ -1,1 +1,143 @@
 @import "reset";
+
+body {
+    font-family: 'Lato', sans-serif;
+}
+
+.container {
+    max-width: 1200px;
+    margin: auto;
+    position: relative;
+}
+
+.header {
+    padding: 5px;
+    background-color: aqua;
+    border: 2px solid #0d7ea0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    &__title {
+        font-size: 28px;
+        font-weight: 700;
+        font-style: italic;
+    }
+    &__btn {
+        padding: 5px 10px;
+        font-size: 16px;
+        background-color: #EEDDFF;
+        border: 2px solid #0d7ea0;
+        border-radius: 25px;
+        box-shadow: 5px 5px 5px #ada1ba;
+        cursor: pointer;
+    }
+
+}
+
+.main__img {
+    max-width: 1200px;
+}
+
+.login {
+    max-width: 300px;
+    padding: 50px;
+    border: 2px solid #085369;
+    background-color: bisque;
+    display: flex;
+    z-index: 1;
+    flex-direction: column;
+    position: absolute;
+    top: 25px;
+    right: 50px;
+    box-shadow: 5px 5px 5px rgb(176, 158, 136);
+}
+
+.login__item {
+    margin-bottom: 15px;
+    background-color: #EEDDFF;
+    box-shadow: 5px 5px 5px #ada1ba;
+}
+
+.login__item:last-child {
+    margin-bottom: 0;
+}
+
+.login__btn {
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #EEDDFF;
+    border: 2px solid #0d7ea0;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #ada1ba;
+    cursor: pointer;
+}
+
+.filterVisits{
+    &__btn {
+        padding: 5px 10px;
+        font-size: 16px;
+        background-color: #EEDDFF;
+        border: 2px solid #0d7ea0;
+        border-radius: 25px;
+        box-shadow: 5px 5px 5px #ada1ba;
+        cursor: pointer;
+    }
+}
+
+.createVisit {
+    max-width: 300px;
+    padding: 50px;
+    border: 2px solid #085369;
+    background-color: bisque;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 50%;
+    right: 50%;
+    transform: translate(50%, -50%);
+    box-shadow: 5px 5px 5px rgb(176, 158, 136);
+
+    &__doctor {
+        padding: 0 10px;
+        margin-bottom: 30px;
+        font-size: 16px;
+        background-color: rgb(181, 162, 138);
+    }
+
+    &__submitDoctor {
+        padding: 5px 10px;
+        font-size: 16px;
+        background-color: #EEDDFF;
+        border: 2px solid #0d7ea0;
+        border-radius: 25px;
+        box-shadow: 5px 5px 5px #ada1ba;
+        cursor: pointer;
+    }
+}
+
+
+.filterVisits {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #085369;
+    background-color: bisque;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 5px 5px 5px rgb(176, 158, 136);
+}
+
+.footer {
+    padding: 10px;
+    background-color: aqua;
+    text-align: center;
+    border: 2px solid #0d7ea0;
+}
+
+.displNone {
+    display: none;
+}
