@@ -1,9 +1,10 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Step project #3 - Cards</title>
@@ -13,6 +14,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="./css/style.min.css">
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -41,15 +43,39 @@
         </header>
         <section class="main">
             <img class="main__img" src="./images/main.jpg" alt="main.jpg">
-            <div class="createVisitWind displNone">
-                <select class="createVisit__doctor">
-                    <option class="createVisit__doctor__item" value="hide">-- Doctor --</option>
-                    <option class="createVisit__doctor__item" value="Dentist">Dentist</option>
-                    <option class="createVisit__doctor__item" value="Cardiologist">Cardiologisty</option>
-                    <option class="createVisit__doctor__item" value="Therapist">Therapist</option>
-                </select>
-                <button class="createVisit__submitDoctor">Submit</button>
-            </div>
+            <form action="" method="get" class="main__createVisit displNone">
+                <div class="main__createVisit__doctor">
+                    <label for="Doctor">Doctor </label>
+                    <select class="main__createVisit__doctors">
+                        <option class="main__createVisit__doc" value="hide">-- Choose doctor --</option>
+                        <option class="main__createVisit__doc" value="Cardiologist">Cardiologist</option>
+                        <option class="main__createVisit__doc" value="Dentist">Dentist</option>
+                        <option class="main__createVisit__doc" value="Therapist">Therapist</option>
+                    </select>
+                </div>
+                <div class="main__createVisit__title displNone">
+                    <label for="title">Aim of visit: </label>
+                    <input type="text" name="title" required>
+                </div>
+                <div class="main__createVisit__discription displNone">
+                    <label for="discription">Short discription visit: </label>
+                    <input type="text" name="discription" required>
+                </div>
+                <div class="main__createVisit__urgency displNone">
+                    <label for="Urgency">Urgency </label>
+                    <select class="createVisit__urgency__status">
+                        <option class="createVisit__urgency__item" value="hide">-- Please select --</option>
+                        <option class="createVisit__urgency__item" value="High">High</option>
+                        <option class="createVisit__urgency__item" value="Normal">Normal</option>
+                        <option class="createVisit__urgency__item" value="Low">Low</option>
+                    </select>
+                </div>
+                <div class="main__createVisit__name displNone">
+                    <label for="name">Enter your name: </label>
+                    <input type="text" name="name" required>
+                </div>
+
+            </form>
             <div class="filterVisits displNone">
                 <input class="filterVisits__purpose" type="text" placeholder="Please enter purpose of visit">
                 <select class="filterVisits__status">
@@ -65,13 +91,20 @@
                 </select>
                 <button class="filterVisits__btn" type="submit">Search</button>
             </div>
+            <form action="" method="get" class="main__createVisit displNone">
+                <div class="main__createVisit__dictor">
+                    <label for="name">Chose your doctor</label>
+                    <option class="main__createVisit__item" value="Doctor">-- Please doctor --</option>
+                    <option class="main__createVisit__item" value="Cardiologist">Cardiologist</option>
+                    <option class="main__createVisit__item" value="Dentist">Dentist</option>
+                    <option class="main__createVisit__item" value="Therapist">Therapist</option>
+                </div>
+            </form>
         </section>
-        <footer class="footer">© SGS corporation. All rights reserved.</footer>
-        
-        
-        
+        <footer class="footer">© AVY corporation. All rights reserved.</footer>
     </div>
 
-<script type="module" src="./js/script.js"></script>
+    <script type="module" src="./js/script.js"></script>
 </body>
+
 </html>

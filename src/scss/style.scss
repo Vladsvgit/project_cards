@@ -37,6 +37,8 @@ body {
 }
 
 .main {
+    position: relative;
+
     &__img {
         max-width: 1200px;
     }
@@ -45,13 +47,26 @@ body {
         font-size: 16px;
         font-weight: 600;
         position: absolute;
-        top: 150px;
+        top: 70px;
         left: 50%;
         transform: translateX(-50%);
     }
+
+    &__createVisit {
+        padding: 20px 10px;
+        background-color: #EEDDFF;
+        border: 2px solid #0d7ea0;
+        border-radius: 25px;
+        box-shadow: 5px 5px 5px #ada1ba;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
 }
-
-
 
 .login {
     max-width: 300px;
@@ -93,7 +108,7 @@ body {
     border: 2px solid #085369;
     background-color: bisque;
     position: absolute;
-    top: 55px;
+    top: 0;
     right: 0;
     display: flex;
     justify-content: space-around;

@@ -5,4 +5,12 @@ export const createBtn = document.querySelector(".header__btn--create");
 export const unloginBtn = document.querySelector(".header__btn--unlogin");
 export const filterVisit = document.querySelector(".filterVisits");
 export const mainConternt = document.querySelector(".main");
-export const createVisitWind = document.querySelector(".createVisitWind");
+export const createVisitWind = document.querySelector(".main__createVisit");
+
+export const chooseDoctor = document.querySelector(".main__createVisit__doctors");
+export const titleInput = document.querySelector(".main__createVisit__title");
+export const discriptionInput = document.querySelector(".main__createVisit__discription");
+export const urgencyInput = document.querySelector(".main__createVisit__urgency");
+export const nameInput = document.querySelector(".main__createVisit__name");
+
+
