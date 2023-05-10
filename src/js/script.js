@@ -1,4 +1,4 @@
-import { loginBtn, createBtn, loginWind, unloginBtn } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit } from "./constant.js";
 
 import { login } from "./login.js";
 
@@ -12,11 +12,10 @@ loginBtn.addEventListener("click", (e) => {
 unloginBtn.addEventListener("click", (e) => {
     e.preventDefault();
     localStorage.removeItem("token");
-    createBtn.classList.toggle("displNone");
-    unloginBtn.classList.toggle("displNone");
-    loginBtn.classList.toggle("displNone");
+    createBtn.classList.add("displNone");
+    unloginBtn.classList.add("displNone");
+    loginBtn.classList.remove("displNone");
     filterVisit.classList.add("displNone");
-
 })
 
 //Classes

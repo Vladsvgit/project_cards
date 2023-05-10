@@ -23,6 +23,7 @@ body {
         font-weight: 700;
         font-style: italic;
     }
+
     &__btn {
         padding: 5px 10px;
         font-size: 16px;
@@ -35,9 +36,22 @@ body {
 
 }
 
-.main__img {
-    max-width: 1200px;
+.main {
+    &__img {
+        max-width: 1200px;
+    }
+
+    &__message {
+        font-size: 16px;
+        font-weight: 600;
+        position: absolute;
+        top: 150px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
 }
+
+
 
 .login {
     max-width: 300px;
@@ -73,7 +87,19 @@ body {
     cursor: pointer;
 }
 
-.filterVisits{
+.filterVisits {
+    width: 100%;
+    padding: 15px 20px;
+    border: 2px solid #085369;
+    background-color: bisque;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    box-shadow: 5px 5px 5px rgb(176, 158, 136);
+
     &__btn {
         padding: 5px 10px;
         font-size: 16px;
@@ -114,21 +140,6 @@ body {
         box-shadow: 5px 5px 5px #ada1ba;
         cursor: pointer;
     }
-}
-
-
-.filterVisits {
-    width: 100%;
-    padding: 15px 20px;
-    border: 2px solid #085369;
-    background-color: bisque;
-    position: absolute;
-    top: 55px;
-    right: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    box-shadow: 5px 5px 5px rgb(176, 158, 136);
 }
 
 .footer {

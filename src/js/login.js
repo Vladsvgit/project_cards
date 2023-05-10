@@ -1,4 +1,4 @@
-import { loginBtnReg, createBtn, unloginBtn, filterVisit } from "./constant.js";
+import { loginBtnReg, createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitWind } from "./constant.js";
 
 export const login = () => {
     console.log("login");
@@ -6,50 +6,53 @@ export const login = () => {
         e.preventDefault();
 
         async function siteLogin() {
-            const tokenRequest = await fetch("https://ajax.test-danit.com/api/v2/cards/login", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' })
-            })
-                .then(response => response.text())
-                .then(data => console.log(data))
-                .then(token => {
-                    localStorage.setItem('token', token)
-                    //console.log(token);
+            const tokenRequest = await new Promise((resolve, reject) => {
+                fetch("https://ajax.test-danit.com/api/v2/cards/login", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ email: 'yasx80@gmail.com', password: '080170YasX' })
                 })
-                .catch((err) => alert("Please login again"));
+                    .then(response => response.text())
+                    .then(token => {
+                        resolve(localStorage.setItem('token', token));
+                    })
+                    .catch(()=> reject("Please login again"))
+                })
 
             const visits = await fetch("https://ajax.test-danit.com/api/v2/cards", {
                 method: 'GET',
                 headers: {
-                    'Content-Type': 'application/text',
+                    'Content-Type': 'application/json',
                     'Authorization': `Bearer ${localStorage.getItem("token")}`
                 }
             }).then(response => response.json())
-                .then(data => console.log(data))
+                // .then(data => console.log(data))
                 .then((data) => {
                     if (data.length === 0) {
-                        alert("No items have been added");
+                        const firstMessage = document.createElement("div");
+                        firstMessage.classList.add("main__message");
+                        firstMessage.textContent = "No items have been added"
+                        mainConternt.append(firstMessage);
                     }
                     console.log(data.length);
                 })
                 .then(() => {
                     createBtn.addEventListener("click", () => {
-                        document.querySelector(".createVisit").classList.toggle("displNone")
+                        createVisitWind.classList.remove("displNone");
                     })
                 })
-                .catch(err => alert(err))
+                .catch(err => console.log(err))
 
-            Promise.all([tokenRequest, visits])
+            await Promise.all([tokenRequest, visits])
                 .then(() => {
                     createBtn.classList.remove("displNone");
                     unloginBtn.classList.remove("displNone");
                     loginWind.classList.add("displNone");
                     filterVisit.classList.remove("displNone");
 
-
+                   
                 })
         }
         siteLogin();
