@@ -1,6 +1,7 @@
 import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, titleInput, discriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtn, createVisitWind } from "./constant.js";
 
 import { login } from "./login.js";
+import {renderCreateVisitForm} from "./createvisit.js"
 
 loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -22,49 +23,9 @@ unloginBtn.addEventListener("click", (e) => {
 
 chooseDoctor.addEventListener("change", e => {
     e.preventDefault();
-
-    if (e.target.value === "Cardiologist") {
-        titleInput.classList.remove("displNone");
-        discriptionInput.classList.remove("displNone");
-        urgencyInput.classList.remove("displNone");
-        nameInput.classList.remove("displNone");
-        preassureInput.classList.remove("displNone");
-        bmiInput.classList.remove("displNone");
-        heartIllInput.classList.remove("displNone");
-        ageInput.classList.remove("displNone");
-        lastVisitInput.classList.add("displNone");
-        createVisitBtn.classList.remove("displNone");
-        return;
-    } else if (e.target.value === "Dentist") {
-        titleInput.classList.remove("displNone");
-        discriptionInput.classList.remove("displNone");
-        urgencyInput.classList.remove("displNone");
-        nameInput.classList.remove("displNone");
-        preassureInput.classList.add("displNone");
-        bmiInput.classList.add("displNone");
-        heartIllInput.classList.add("displNone");
-        ageInput.classList.add("displNone");
-        lastVisitInput.classList.remove("displNone");
-        createVisitBtn.classList.remove("displNone");
-        return;
-    } else if (e.target.value === "Therapist") {
-        titleInput.classList.remove("displNone");
-        discriptionInput.classList.remove("displNone");
-        urgencyInput.classList.remove("displNone");
-        nameInput.classList.remove("displNone");
-        preassureInput.classList.add("displNone");
-        bmiInput.classList.add("displNone");
-        heartIllInput.classList.add("displNone");
-        lastVisitInput.classList.add("displNone");
-        ageInput.classList.remove("displNone");
-        createVisitBtn.classList.remove("displNone");
-        return;
-    }
-
+    renderCreateVisitForm(e.target.value);
     console.log(e.target.value);
 })
-
-
 
 //Classes
 
