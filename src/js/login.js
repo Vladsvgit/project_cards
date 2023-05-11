@@ -1,8 +1,8 @@
-import { loginBtnReg, createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitWind } from "./constant.js";
+import { loginBtnReg, createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitWind, backGroundShadow } from "./constant.js";
 
 export const login = () => {
     console.log("login");
-    loginBtnReg.addEventListener("click", (e) => {
+    loginWind.addEventListener("submit", (e) => {
         e.preventDefault();
 
         async function siteLogin() {
@@ -12,7 +12,7 @@ export const login = () => {
                     headers: {
                         'Content-Type': 'application/json'
                     },
-                    body: JSON.stringify({ email: 'yasx80@gmail.com', password: '080170YasX' })
+                    body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' })
                 })
                     .then(response => response.text())
                     .then(token => {
@@ -30,6 +30,7 @@ export const login = () => {
             }).then(response => response.json())
                 // .then(data => console.log(data))
                 .then((data) => {
+                    console.log(data);
                     if (data.length === 0) {
                         const firstMessage = document.createElement("div");
                         firstMessage.classList.add("main__message");
@@ -47,12 +48,16 @@ export const login = () => {
 
             await Promise.all([tokenRequest, visits])
                 .then(() => {
-                    createBtn.classList.remove("displNone");
+                    if (localStorage.getItem("token") !== "Incorrect username or password") {
+                        createBtn.classList.remove("displNone");
                     unloginBtn.classList.remove("displNone");
                     loginWind.classList.add("displNone");
                     filterVisit.classList.remove("displNone");
-
-                   
+                    backGroundShadow.classList.add("displNone");
+                    } else {
+                        alert ("Incorrect username or password");
+                        e.target.reset();
+                    }
                 })
         }
         siteLogin();

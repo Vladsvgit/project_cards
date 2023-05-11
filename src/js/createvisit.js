@@ -39,19 +39,29 @@ export const renderCreateVisitForm = (doctor) => {
         createVisitBtn.classList.remove("displNone");
         return;
     }
+};
+
+export const createVisit = () => {
+    if (chooseDoctor.value === "Cardiologist") {
+        const visitCardiologist = new VisitCardiologist();
+        visitCardiologist.sendToServer()
+    } else if (chooseDoctor.value === "Dentist") {
+        const visitDentist = new VisitDentist();
+        visitDentist.sendToServer();
+    }
 }
 
 class Visit {
-    constructor(purpose, discription, urgency, fullName) {
-        this.purpose = purpose;
+    constructor(title, discription, urgency, fullName) {
+        this.title = title;
         this.discription = discription;
         this.urgency = urgency;
         this.fullName = fullName
     }
 };
 class VisitCardiologist extends Visit {
-    constructor(purpose, discription, urgency, fullName, presure, bodyIndex, heartIllness, age) {
-        super(purpose, discription, urgency, fullName);
+    constructor(title, discription, urgency, fullName, presure, bodyIndex, heartIllness, age) {
+        super(title, discription, urgency, fullName);
         this.presure = presure;
         this.bodyIndex = bodyIndex;
         heartIllness = heartIllness;
@@ -60,8 +70,8 @@ class VisitCardiologist extends Visit {
 };
 
 class VisitDentist extends Visit {
-    constructor(purpose, discription, urgency, fullName, lastVisitDate) {
-        super(purpose, discription, urgency, fullName);
+    constructor(title, discription, urgency, fullName, lastVisitDate) {
+        super(title, discription, urgency, fullName);
         this.lastVisitDate = lastVisitDate
     }
 };
@@ -73,7 +83,7 @@ class VisitTherapist extends Visit {
     }
 };
 
-const visit = new Visit();
-const visitDentist = new VisitDentist();
-const visitCardiologist = new VisitCardiologist();
-const visitTherapist = new VisitTherapist();
+// const visit = new Visit();
+// const visitDentist = new VisitDentist();
+// const 
+// const visitTherapist = new VisitTherapist();

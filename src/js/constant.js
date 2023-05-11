@@ -6,7 +6,9 @@ export const unloginBtn = document.querySelector(".header__btn--unlogin");
 export const filterVisit = document.querySelector(".filterVisits");
 export const mainConternt = document.querySelector(".main");
 export const createVisitWind = document.querySelector(".main__createVisit");
+export const backGroundShadow = document.querySelector(".backGroundShadow");
 
+// Create visit Items
 export const chooseDoctor = document.querySelector(".main__createVisit__doctors");
 export const titleInput = document.querySelector(".main__createVisit__title");
 export const discriptionInput = document.querySelector(".main__createVisit__discription");
@@ -18,6 +20,7 @@ export const heartIllInput = document.querySelector(".main__createVisit__heartIl
 export const ageInput = document.querySelector(".main__createVisit__age");
 export const lastVisitInput = document.querySelector(".main__createVisit__lastVisit");
 export const createVisitBtn = document.querySelector(".main__createVisit__btn");
+
 
 
 

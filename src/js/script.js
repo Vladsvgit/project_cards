@@ -3,6 +3,10 @@ import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, 
 import { login } from "./login.js";
 import {renderCreateVisitForm} from "./createvisit.js"
 
+//  if (token) {
+
+//  }
+
 loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
     loginBtn.classList.add("displNone");
@@ -24,7 +28,11 @@ unloginBtn.addEventListener("click", (e) => {
 chooseDoctor.addEventListener("change", e => {
     e.preventDefault();
     renderCreateVisitForm(e.target.value);
-    console.log(e.target.value);
+})
+
+createVisitBtn.addEventListener("submit", e => {
+    e.preventDefault();
+    createVisit();
 })
 
 //Classes
