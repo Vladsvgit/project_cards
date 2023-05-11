@@ -1,4 +1,4 @@
-import { loginBtnReg, createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitWind, backGroundShadow } from "./constant.js";
+import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitWind, backGroundShadow } from "./constant.js";
 
 export const login = () => {
     console.log("login");

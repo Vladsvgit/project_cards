@@ -1,7 +1,7 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, titleInput, discriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtn, createVisitWind } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitBtn, createVisitWind } from "./constant.js";
 
 import { login } from "./login.js";
-import {renderCreateVisitForm} from "./createvisit.js"
+import { renderCreateVisitForm, createVisit } from "./createvisit.js"
 
 //  if (token) {
 
@@ -30,10 +30,12 @@ chooseDoctor.addEventListener("change", e => {
     renderCreateVisitForm(e.target.value);
 })
 
-createVisitBtn.addEventListener("submit", e => {
+createVisitBtn.addEventListener("click", e => {
     e.preventDefault();
     createVisit();
-})
+});
+
+
 
 //Classes
 
