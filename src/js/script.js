@@ -1,4 +1,4 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitBtn, createVisitWind } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm } from "./constant.js";
 
 import { login } from "./login.js";
 import { renderCreateVisitForm, createVisit } from "./createvisit.js"
@@ -21,7 +21,7 @@ unloginBtn.addEventListener("click", (e) => {
     unloginBtn.classList.add("displNone");
     loginBtn.classList.remove("displNone");
     filterVisit.classList.add("displNone");
-    createVisitWind.classList.add("displNone");
+    createVisitForm.classList.add("displNone");
     document.querySelector(".main__message").remove();
 });
 
@@ -30,11 +30,11 @@ chooseDoctor.addEventListener("change", e => {
     renderCreateVisitForm(e.target.value);
 })
 
-createVisitBtn.addEventListener("click", e => {
+createVisitForm.addEventListener("submit", e => {
     e.preventDefault();
-    createVisit();
+    createVisit(e.target);
+    e.target.reset();
 });
-
 
 
 //Classes

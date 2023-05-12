@@ -1,7 +1,8 @@
-import { chooseDoctor, titleInput, discriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtn } from "./constant.js";
+import { chooseDoctor, titleInput, discriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtn, token } from "./constant.js";
 
 
-export const renderCreateVisitForm = (doctor) => {
+
+export const renderCreateVisitForm = function (doctor) {
     if (doctor === "Cardiologist") {
         titleInput.classList.remove("displNone");
         discriptionInput.classList.remove("displNone");
@@ -71,15 +72,16 @@ export const renderCreateVisitForm = (doctor) => {
     }
 };
 
-export const createVisit = () => {
+
+export const createVisit = (target) => {
     if (chooseDoctor.value === "Cardiologist") {
-        const visitCardiologist = new VisitCardiologist(titleInput.value, discriptionInput.value, urgencyInput.value, nameInput.value, preassureInput.value, preassureInput.value, bmiInput.value, heartIllInput.value, ageInput.value);
+        const visitCardiologist = new VisitCardiologist(target.title.value, target.discription.value, target.urgency.value, target.name.value, target.pressure.value, target.bmi.value, target.heartIll.value, target.age.value);
         visitCardiologist.sendToServer();
     } else if (chooseDoctor.value === "Dentist") {
-        const visitDentist = new VisitDentist(titleInput.value, discriptionInput.value, urgencyInput.value, nameInput.value, preassureInput.value, preassureInput.value, bmiInput.value, heartIllInput.value, ageInput.value);
+        const visitDentist = new VisitDentist(target.title.value, target.discription.value, target.urgency.value, target.name.value, target.lastVisit.value);
         visitDentist.sendToServer();
     } else if (chooseDoctor.value === "Therapist") {
-        const visitTherapist = new VisitTherapist(titleInput.value, discriptionInput.value, urgencyInput.value, nameInput.value, preassureInput.value, preassureInput.value, bmiInput.value, heartIllInput.value, ageInput.value);
+        const visitTherapist = new VisitTherapist(target.title.value, target.discription.value, target.urgency.value, target.name.value, target.age.value);
         visitTherapist.sendToServer();
     }
 }
@@ -93,15 +95,35 @@ class Visit {
     }
 };
 class VisitCardiologist extends Visit {
-    constructor(title, discription, urgency, fullName, presure, bodyIndex, heartIllness, age) {
+    constructor(title, discription, urgency, fullName, pressure, bodyIndex, heartIll, age) {
         super(title, discription, urgency, fullName);
-        this.presure = presure;
+        this.pressure = pressure;
         this.bodyIndex = bodyIndex;
-        this.heartIllness = heartIllness;
+        this.heartIll = heartIll;
         this.age = age
     }
     sendToServer() {
-        console.log(this);
+        // console.log(this);
+        fetch("https://ajax.test-danit.com/api/v2/cards", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                doctor: 'Cardiologist',
+                title: this.title,
+                description: this.description,
+                urgency: this.urgency,
+                fullName: this.fullName,
+                pressure: this.pressure,
+                bpi: this.bodyIndex,
+                heartIllness: this.heartIll,
+                age: this.age
+            })
+        })
+            .then(response => response.json())
+            .then(response => console.log(response))
     }
 
 };
@@ -112,7 +134,24 @@ class VisitDentist extends Visit {
         this.lastVisitDate = lastVisitDate
     }
     sendToServer() {
-        console.log(this);
+        // console.log(this);
+        fetch("https://ajax.test-danit.com/api/v2/cards", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                doctor: 'Dentist',
+                title: this.title,
+                description: this.description,
+                urgency: this.urgency,
+                fullName: this.fullName,
+                lastVisitDate: this.lastVisitDate
+            })
+        })
+            .then(response => response.json())
+            .then(response => console.log(response))
 
     }
 };
@@ -123,12 +162,23 @@ class VisitTherapist extends Visit {
         this.age = age
     }
     sendToServer() {
-        console.log(this);
-
+        // console.log(this);
+        fetch("https://ajax.test-danit.com/api/v2/cards", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                doctor: 'Therapist',
+                title: this.title,
+                description: this.description,
+                urgency: this.urgency,
+                fullName: this.fullName,
+                age: this.age
+            })
+        })
+            .then(response => response.json())
+            .then(response => console.log(response))
     }
 };
-
-// const visit = new Visit();
-// const visitDentist = new VisitDentist();
-// const
-// const visitTherapist = new VisitTherapist();

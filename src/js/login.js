@@ -1,4 +1,4 @@
-import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitWind, backGroundShadow } from "./constant.js";
+import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitForm, backGroundShadow, token } from "./constant.js";
 
 export const login = () => {
     console.log("login");
@@ -18,14 +18,14 @@ export const login = () => {
                     .then(token => {
                         resolve(localStorage.setItem('token', token));
                     })
-                    .catch(()=> reject("Please login again"))
-                })
+                    .catch(() => reject("Please login again"))
+            })
 
             const visits = await fetch("https://ajax.test-danit.com/api/v2/cards", {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${localStorage.getItem("token")}`
+                    'Authorization': `Bearer ${token}`
                 }
             }).then(response => response.json())
                 // .then(data => console.log(data))
@@ -41,7 +41,7 @@ export const login = () => {
                 })
                 .then(() => {
                     createBtn.addEventListener("click", () => {
-                        createVisitWind.classList.remove("displNone");
+                        createVisitForm.classList.remove("displNone");
                     })
                 })
                 .catch(err => console.log(err))
@@ -50,12 +50,12 @@ export const login = () => {
                 .then(() => {
                     if (localStorage.getItem("token") !== "Incorrect username or password") {
                         createBtn.classList.remove("displNone");
-                    unloginBtn.classList.remove("displNone");
-                    loginWind.classList.add("displNone");
-                    filterVisit.classList.remove("displNone");
-                    backGroundShadow.classList.add("displNone");
+                        unloginBtn.classList.remove("displNone");
+                        loginWind.classList.add("displNone");
+                        filterVisit.classList.remove("displNone");
+                        backGroundShadow.classList.add("displNone");
                     } else {
-                        alert ("Incorrect username or password");
+                        alert("Incorrect username or password");
                         e.target.reset();
                     }
                 })
