@@ -13,6 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginBtn.classList.add("displNone");
     }
 })
+
 // обработчик кнопки Create card
 createBtn.addEventListener("click", () => {
     createVisitForm.classList.remove("displNone");
