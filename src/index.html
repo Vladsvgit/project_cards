@@ -36,8 +36,8 @@
                 </button>
             </div>
             <form class="login displNone">
-                <input class="login__item login__email" type="email" placeholder="example@email.com">
-                <input class="login__item login__password" type="password" placeholder="PASSWORD">
+                <input class="login__item login__email filterForm" type="email" placeholder="example@email.com">
+                <input class="login__item login__password filterForm" type="password" placeholder="PASSWORD">
                 <button type="submit" class="login__item login__btn">LOGIN</button>
             </form>
         </header>
@@ -98,21 +98,21 @@
 
                 <button class="main__createVisit__btn displNone" type="submit"> Submit </button>
             </form>
-            <div class="filterVisits displNone">
-                <input class="filterVisits__purpose" type="text" placeholder="Please enter purpose of visit">
-                <select class="filterVisits__status">
-                    <option class="filterVisits__status__item" value="hide">-- Please select --</option>
+            <form class="filterVisits displNone">
+                <input class="filterVisits__purpose filterForm" type="text" placeholder="Please enter purpose of visit">
+                <select class="filterVisits__status filterForm">
+                    <option class="filterVisits__status__item" value="all">All</option>
                     <option class="filterVisits__status__item" value="Open">Open</option>
                     <option class="filterVisits__status__item" value="Done">Done</option>
                 </select>
-                <select class="filterVisits__urgency">
-                    <option class="filterVisits__urgency__item" value="hide">-- Please select --</option>
+                <select class="filterVisits__urgency filterForm">
+                    <option class="filterVisits__urgency__item" value="all">All</option>
                     <option class="filterVisits__urgency__item" value="High">High</option>
                     <option class="filterVisits__urgency__item" value="Normal">Normal</option>
                     <option class="filterVisits__urgency__item" value="Low">Low</option>
                 </select>
                 <button class="filterVisits__btn" type="submit">Search</button>
-            </div>
+            </form>
             <form action="" method="get" class="main__createVisit displNone">
                 <div class="main__createVisit__dictor">
                     <label for="name">Chose your doctor</label>

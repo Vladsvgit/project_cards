@@ -146,6 +146,15 @@ body {
         box-shadow: 5px 5px 5px #ada1ba;
         cursor: pointer;
     }
+    &__purpose::placeholder{
+        font-size:14px
+    }
+}
+.filterForm{
+    border: 1px solid #0d7ea0;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #ada1ba;
+    font-size: 16px;
 }
 
 .createVisit {

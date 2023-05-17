@@ -40,9 +40,9 @@ export const login = () => {
                     console.log(data.length);
                 })
                 .then(() => {
-                    createBtn.addEventListener("click", () => {
-                        createVisitForm.classList.remove("displNone");
-                    })
+                    // createBtn.addEventListener("click", () => {
+                    //     createVisitForm.classList.remove("displNone");
+                    // })
                 })
                 .catch(err => console.log(err))
 

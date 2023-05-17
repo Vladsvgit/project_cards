@@ -1,11 +1,28 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, token } from "./constant.js";
 
 import { login } from "./login.js";
 import { renderCreateVisitForm, createVisit } from "./createvisit.js"
 
-//  if (token) {
+//Проверка на сохраненный токен
+document.addEventListener('DOMContentLoaded', () => {
+    if (token && token !== "Incorrect username or password") {
+        createBtn.classList.remove("displNone");
+        unloginBtn.classList.remove("displNone");
+        loginWind.classList.add("displNone");
+        filterVisit.classList.remove("displNone");
+        loginBtn.classList.add("displNone");
+    }
+})
+// обработчик кнопки Create card
+createBtn.addEventListener("click", () => {
+    createVisitForm.classList.remove("displNone");
+})
 
-//  }
+// Filter
+
+filterVisit.addEventListener("submit", e => {
+    e.preventDefault();
+})
 
 loginBtn.addEventListener("click", (e) => {
     e.preventDefault();
@@ -22,7 +39,10 @@ unloginBtn.addEventListener("click", (e) => {
     loginBtn.classList.remove("displNone");
     filterVisit.classList.add("displNone");
     createVisitForm.classList.add("displNone");
-    document.querySelector(".main__message").remove();
+   const firstMessage = document.querySelector(".main__message");
+   if(firstMessage){
+       firstMessage.remove();
+   }
 });
 
 chooseDoctor.addEventListener("change", e => {
@@ -45,3 +65,4 @@ class Modal {
     }
 }
 const modal = new Modal();
+
