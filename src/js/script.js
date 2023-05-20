@@ -40,6 +40,7 @@ filterVisit.addEventListener("submit", e => {
 })
 
 loginBtn.addEventListener("click", (e) => {
+    // console.log("Login BTN");
     e.preventDefault();
     loginBtn.classList.add("displNone");
     loginWind.classList.remove("displNone");
