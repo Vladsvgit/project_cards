@@ -117,7 +117,7 @@ export const createVisit = (target) => {
   }
 };
 
-class Visit {
+export class Visit {
   constructor(title, discription, urgency, fullName) {
     this.title = title;
     this.discription = discription;
@@ -125,7 +125,7 @@ class Visit {
     this.fullName = fullName;
   }
 }
-class VisitCardiologist extends Visit {
+export class VisitCardiologist extends Visit {
   constructor(
     title,
     discription,
@@ -142,6 +142,7 @@ class VisitCardiologist extends Visit {
     this.heartIll = heartIll;
     this.age = age;
   }
+  
   sendToServer() {
     // console.log(this);
     fetch("https://ajax.test-danit.com/api/v2/cards", {
@@ -164,6 +165,32 @@ class VisitCardiologist extends Visit {
     })
       .then((response) => response.json())
       .then((response) => console.log(response));
+  }
+
+  renderCardiologist (root, objectCard) {
+    let {fullName, id, title, discription, urgency, pressure, bpi, heartIll, age} = objectCard;
+   root.insertAdjacentHTML(
+    "beforeend",
+    `<ul class="block-cards__cards-list">
+  <li class="full-name">Fullname : ${fullName}</li>
+  <li class="doctor">Doctor : Cardiologist</li>
+  <li id="${id}" class="displNone">${id}</li>
+  <li>
+    <ul class="block-cards__sublist ">
+      <li class="title">Title : ${title}</li>
+      <li class="discription">Discription : ${discription}</li>
+      <li class="urgency">Urgency : ${urgency}</li>
+      <li class="pressure">Pressure : ${pressure}</li>
+      <li class="bodyIndex">BodyIndex : ${bpi}</li>
+      <li class="heartIll">HeartIll : ${heartIll}</li>
+      <li class="age">Age : ${age}</li>
+    </ul>
+  </li>
+  <button class="block-cards__close">x</button>
+  <button class="block-cards__edit">edit</button>
+  <button class="block-cards__show">show more</button>
+</ul>`
+  );
   }
 }
 

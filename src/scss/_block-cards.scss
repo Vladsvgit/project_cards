@@ -1,0 +1,27 @@
+.btn {
+    display: inline-block;
+    padding: 5px 10px;
+    font-size: 16px;
+    background-color: #EEDDFF;
+    border: 2px solid #0d7ea0;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #ada1ba;
+    cursor: pointer;
+
+}
+
+.card {
+    
+    width: 30%;
+    padding: 6px 10px;
+    background-color: bisque;
+    border: 2px solid #0d7ea0;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #ada1ba;
+   
+}
+.block-cards{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
