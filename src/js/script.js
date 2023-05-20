@@ -1,7 +1,7 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, token } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token } from "./constant.js";
 
-import { login, getAllCards,noCardsMessage } from "./login.js";
-import { renderCreateVisitForm, createVisit } from "./createvisit.js"
+import { login, getAllCards, noCardsMessage } from "./login.js";
+import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js"
 import { filter, filterData } from "./filter.js"
 
 //Проверка на сохраненный токен
@@ -33,7 +33,7 @@ filterVisit.addEventListener("submit", e => {
 
     if (filterData.length === 0) {
         noCardsMessage('There are no cards matching the search criteria')
-    }else {
+    } else {
         document.querySelector('.main__message').remove();
     }
     e.target.reset()
@@ -54,10 +54,10 @@ unloginBtn.addEventListener("click", (e) => {
     loginBtn.classList.remove("displNone");
     filterVisit.classList.add("displNone");
     createVisitForm.classList.add("displNone");
-   const firstMessage = document.querySelector(".main__message");
-   if(firstMessage){
-       firstMessage.remove();
-   }
+    const firstMessage = document.querySelector(".main__message");
+    if (firstMessage) {
+        firstMessage.remove();
+    }
 });
 
 chooseDoctor.addEventListener("change", e => {
@@ -70,6 +70,11 @@ createVisitForm.addEventListener("submit", e => {
     createVisit(e.target);
     e.target.reset();
 });
+
+cancelVisitBtn.addEventListener("click", e => {
+    e.preventDefault();
+    cancelVisitForm();
+})
 
 
 //Classes

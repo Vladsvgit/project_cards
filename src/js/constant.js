@@ -22,6 +22,7 @@ export const heartIllInput = document.querySelector(".main__createVisit__heartIl
 export const ageInput = document.querySelector(".main__createVisit__age");
 export const lastVisitInput = document.querySelector(".main__createVisit__lastVisit");
 export const createVisitBtn = document.querySelector(".main__createVisit__btn");
+export const cancelVisitBtn = document.querySelector(".main__cancelVisit__btn");
 
 
 

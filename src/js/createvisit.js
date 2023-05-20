@@ -1,4 +1,4 @@
-import { chooseDoctor, titleInput, discriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtn, token } from "./constant.js";
+import { createVisitForm, chooseDoctor, titleInput, discriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtn, cancelVisitBtn, token } from "./constant.js";
 
 
 
@@ -24,6 +24,8 @@ export const renderCreateVisitForm = function (doctor) {
         lastVisitInput.lastElementChild.required = false;
 
         createVisitBtn.classList.remove("displNone");
+        cancelVisitBtn.classList.remove("displNone");
+
         return;
     } else if (doctor === "Dentist") {
         titleInput.classList.remove("displNone");
@@ -46,6 +48,7 @@ export const renderCreateVisitForm = function (doctor) {
         lastVisitInput.lastElementChild.required = true;
 
         createVisitBtn.classList.remove("displNone");
+        cancelVisitBtn.classList.remove("displNone");
         return;
     } else if (doctor === "Therapist") {
         titleInput.classList.remove("displNone");
@@ -68,6 +71,7 @@ export const renderCreateVisitForm = function (doctor) {
         ageInput.lastElementChild.required = true;
 
         createVisitBtn.classList.remove("displNone");
+        cancelVisitBtn.classList.remove("displNone");
         return;
     }
 };
@@ -84,6 +88,10 @@ export const createVisit = (target) => {
         const visitTherapist = new VisitTherapist(target.title.value, target.discription.value, target.urgency.value, target.name.value, target.age.value);
         visitTherapist.sendToServer();
     }
+}
+
+export const cancelVisitForm = () => {
+    createVisitForm.classList.add("displNone");
 }
 
 class Visit {

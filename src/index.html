@@ -95,8 +95,11 @@
                     <label for="lastVisit">Enter your date of last visit: </label>
                     <input type="date" name="lastVisit" required>
                 </div>
-
-                <button class="main__createVisit__btn displNone" type="submit"> Submit </button>
+<div class="main__createVisit__btnBlock">
+    <button class="main__createVisit__btn displNone" type="submit"> Submit </button>
+    <button class="main__cancelVisit__btn displNone" type="reset"> Cancel </button>
+</div>
+                
             </form>
             <form class="filterVisits displNone">
                 <input class="filterVisits__purpose filterForm" type="text" placeholder="Please enter purpose of visit">
