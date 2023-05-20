@@ -1,7 +1,8 @@
 import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, token } from "./constant.js";
 
-import { login } from "./login.js";
+import { login, getAllCards,noCardsMessage } from "./login.js";
 import { renderCreateVisitForm, createVisit } from "./createvisit.js"
+import { filter, filterData } from "./filter.js"
 
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {
@@ -11,6 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         loginWind.classList.add("displNone");
         filterVisit.classList.remove("displNone");
         loginBtn.classList.add("displNone");
+        getAllCards(token)
     }
 })
 
@@ -23,6 +25,18 @@ createBtn.addEventListener("click", () => {
 
 filterVisit.addEventListener("submit", e => {
     e.preventDefault();
+    const inputPurpose = document.querySelector(".filterVisits__purpose").value;
+    const selectedStatus = document.querySelector('.filterVisits__status').value;
+    const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
+    filter(inputPurpose, selectedStatus, selectedUrgency);
+    console.log(filterData)
+
+    if (filterData.length === 0) {
+        noCardsMessage('There are no cards matching the search criteria')
+    }else {
+        document.querySelector('.main__message').remove();
+    }
+    e.target.reset()
 })
 
 loginBtn.addEventListener("click", (e) => {
