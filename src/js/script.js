@@ -1,8 +1,9 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token, sectionCards } from "./constant.js";
 
 import { login, getAllCards, noCardsMessage } from "./login.js";
-import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js"
-import { filter, filterData } from "./filter.js"
+import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js";
+import { filter, filterData } from "./filter.js";
+// import {renderAllCards} from "./renderCard.js";
 
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {
@@ -64,17 +65,18 @@ unloginBtn.addEventListener("click", (e) => {
     if (firstMessage) {
         firstMessage.remove();
     }
+    sectionCards.innerHTML = "";
 });
 
-chooseDoctor.addEventListener("change", e => {
-    e.preventDefault();
-    renderCreateVisitForm(e.target.value);
-})
+chooseDoctor.addEventListener("change", (e) => {
+  e.preventDefault();
+  renderCreateVisitForm(e.target.value);
+});
 
-createVisitForm.addEventListener("submit", e => {
-    e.preventDefault();
-    createVisit(e.target);
-    e.target.reset();
+createVisitForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  createVisit(e.target);
+  e.target.reset();
 });
 
 cancelVisitBtn.addEventListener("click", e => {
@@ -86,9 +88,9 @@ cancelVisitBtn.addEventListener("click", e => {
 //Classes
 
 class Modal {
-    constructor() {
-
-    }
+  constructor() {}
 }
 const modal = new Modal();
+
+// renderAllCards(arr, sectionCards);
 

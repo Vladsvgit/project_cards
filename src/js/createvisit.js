@@ -1,7 +1,5 @@
 import { createVisitForm, chooseDoctor, titleInput, descriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtnBlock, createVisitBtn, cancelVisitBtn, token } from "./constant.js";
 
-
-
 export const renderCreateVisitForm = function (doctor) {
     if (doctor === "Cardiologist") {
         titleInput.classList.remove("displNone");
@@ -11,17 +9,17 @@ export const renderCreateVisitForm = function (doctor) {
         preassureInput.classList.remove("displNone");
         preassureInput.lastElementChild.required = true;
 
-        bmiInput.classList.remove("displNone");
-        bmiInput.lastElementChild.required = true;
+    bmiInput.classList.remove("displNone");
+    bmiInput.lastElementChild.required = true;
 
-        heartIllInput.classList.remove("displNone");
-        heartIllInput.lastElementChild.required = true;
+    heartIllInput.classList.remove("displNone");
+    heartIllInput.lastElementChild.required = true;
 
-        ageInput.classList.remove("displNone");
-        ageInput.lastElementChild.required = true;
+    ageInput.classList.remove("displNone");
+    ageInput.lastElementChild.required = true;
 
-        lastVisitInput.classList.add("displNone");
-        lastVisitInput.lastElementChild.required = false;
+    lastVisitInput.classList.add("displNone");
+    lastVisitInput.lastElementChild.required = false;
 
         createVisitBtnBlock.classList.remove("displNone");
         return;
@@ -34,17 +32,17 @@ export const renderCreateVisitForm = function (doctor) {
         preassureInput.classList.add("displNone");
         preassureInput.lastElementChild.required = false;
 
-        bmiInput.classList.add("displNone");
-        bmiInput.lastElementChild.required = false;
+    bmiInput.classList.add("displNone");
+    bmiInput.lastElementChild.required = false;
 
-        heartIllInput.classList.add("displNone");
-        heartIllInput.lastElementChild.required = false;
+    heartIllInput.classList.add("displNone");
+    heartIllInput.lastElementChild.required = false;
 
-        ageInput.classList.add("displNone");
-        ageInput.lastElementChild.required = false;
+    ageInput.classList.add("displNone");
+    ageInput.lastElementChild.required = false;
 
-        lastVisitInput.classList.remove("displNone");
-        lastVisitInput.lastElementChild.required = true;
+    lastVisitInput.classList.remove("displNone");
+    lastVisitInput.lastElementChild.required = true;
 
         createVisitBtnBlock.classList.remove("displNone");
         return;
@@ -57,23 +55,22 @@ export const renderCreateVisitForm = function (doctor) {
         preassureInput.classList.add("displNone");
         preassureInput.lastElementChild.required = false;
 
-        bmiInput.classList.add("displNone");
-        bmiInput.lastElementChild.required = false;
+    bmiInput.classList.add("displNone");
+    bmiInput.lastElementChild.required = false;
 
-        heartIllInput.classList.add("displNone");
-        heartIllInput.lastElementChild.required = false;
+    heartIllInput.classList.add("displNone");
+    heartIllInput.lastElementChild.required = false;
 
-        lastVisitInput.classList.add("displNone");
-        lastVisitInput.lastElementChild.required = false;
+    lastVisitInput.classList.add("displNone");
+    lastVisitInput.lastElementChild.required = false;
 
-        ageInput.classList.remove("displNone");
-        ageInput.lastElementChild.required = true;
+    ageInput.classList.remove("displNone");
+    ageInput.lastElementChild.required = true;
 
         createVisitBtnBlock.classList.remove("displNone");
         return;
     }
 };
-
 
 export const createVisit = (target) => {
     if (chooseDoctor.value === "Cardiologist") {
@@ -134,7 +131,32 @@ class VisitCardiologist extends Visit {
             .then(response => console.log(response))
     }
 
-};
+  renderCardiologist (root, objectCard) {
+    let {fullName, id, title, discription, urgency, pressure, bpi, heartIll, age} = objectCard;
+   root.insertAdjacentHTML(
+    "beforeend",
+    `<ul class="block-cards__cards-list">
+  <li class="full-name">Fullname : ${fullName}</li>
+  <li class="doctor">Doctor : Cardiologist</li>
+  <li id="${id}" class="displNone">${id}</li>
+  <li>
+    <ul class="block-cards__sublist ">
+      <li class="title">Title : ${title}</li>
+      <li class="discription">Discription : ${discription}</li>
+      <li class="urgency">Urgency : ${urgency}</li>
+      <li class="pressure">Pressure : ${pressure}</li>
+      <li class="bodyIndex">BodyIndex : ${bpi}</li>
+      <li class="heartIll">HeartIll : ${heartIll}</li>
+      <li class="age">Age : ${age}</li>
+    </ul>
+  </li>
+  <button class="block-cards__close">x</button>
+  <button class="block-cards__edit">edit</button>
+  <button class="block-cards__show">show more</button>
+</ul>`
+  );
+  }
+}
 
 class VisitDentist extends Visit {
     constructor(title, description, urgency, fullName, lastVisitDate) {
