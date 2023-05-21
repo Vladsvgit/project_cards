@@ -1,35 +1,6 @@
 export {renderAllCards};
 
-
-
 const sectionCards = document.querySelector(".block-cards");
-// {title,discription,urgency,fullName,pressure,bpi,heartIll,lastVisitDate,age,doctor,id}
-const obj111 = {
-  age: "32",
-  bpi: "12",
-  doctor: "Cardiologist",
-  fullName: "Artem Lyasenko",
-  heartIllness: "Ok",
-  id: 170513,
-  pressure: "120/80",
-  title: "Heart ill",
-  urgency: "High",
-};
-
-const obj222 = {
-  age: "44",
-  bpi: "12",
-  doctor: "Cardiologist",
-  fullName: "Makar Pupko",
-  heartIllness: "Ok",
-  id: 270533,
-  pressure: "120/80",
-  title: "Heart ill",
-  urgency: "High",
-};
-
-const arr = [obj111, obj222];
-
 
 
 function renderCardiologist(root, objectCard) {
@@ -66,7 +37,7 @@ function renderCardiologist(root, objectCard) {
 </ul>
 <button class="block-cards__edit btn">edit</button>
 <button class="block-cards__show btn">show more</button>
-<button class="block-cards__hide displNone">Show less</button>
+<button class="block-cards__hide btn displNone">Show less</button>
 </div>
 `
   );
@@ -94,13 +65,13 @@ function renderDentist(root, objectCard) {
     <li class="title">Title : ${title}</li>
     <li class="discription">Discription : ${discription}</li>
     <li class="urgency">Urgency : ${urgency}</li>
-    <li class="lastVisitDate">${lastVisitDate}</li>
+    <li class="lastVisitDate">Last visit date : ${lastVisitDate}</li>
   </ul>
 </li>
 </ul>
 <button class="block-cards__edit btn">edit</button>
 <button class="block-cards__show btn">show more</button>
-<button class="block-cards__hide displNone">Show less</button>
+<button class="block-cards__hide btn displNone">Show less</button>
 </div>
 `
   );
@@ -134,17 +105,16 @@ function renderTherapist(root, objectCard) {
 </ul>
 <button class="block-cards__edit btn">edit</button>
 <button class="block-cards__show btn" onclick= "">show more</button>
-<button class="block-cards__hide displNone">Show less</button>
+<button class="block-cards__hide btn displNone">Show less</button>
 </div>
 `
   );
 
 }
 
-function showHide(element) {
-  element.classList.toggle("displNone");
-
-}
+// function showHide(element) {
+//   element.classList.toggle("displNone");
+//}
 
  function renderAllCards(arrayCards, root) {
   arrayCards.forEach((element) => {
@@ -157,18 +127,19 @@ function showHide(element) {
     }
   });
 }
-// let cardd = document.querySelector()
+
+
 sectionCards.addEventListener("click", (e) => {
-  let elem = e.target.closest(".block-card")
-  console.log(elem);
-  let subtext = elem.querySelector(".block-cards__sublist")
-  console.log(subtext);
-  subtext.classList.toggle("displNone")
+  if (e.target.classList.contains("block-cards__show") || e.target.classList.contains("block-cards__hide")){
+  let elem = e.target.closest(".block-card");
+  
+  let subtext = elem.querySelector(".block-cards__sublist");
+  let btnMore = elem.querySelector(".block-cards__show");
+  let btnLess = elem.querySelector(".block-cards__hide");
+  
+  subtext.classList.toggle("displNone");
+  btnMore.classList.toggle("displNone");
+  btnLess.classList.toggle("displNone");
+  }
 }
 )
-
-
-
-
-// ArrayAllCards();
-// renderAllCards(arr, sectionCards);
