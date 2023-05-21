@@ -37,7 +37,7 @@ body {
 }
 
 .main {
-    min-height: 700px;
+    height: calc(100vh - 99px);
     background-image: url(../images/main.jpg);
     background-size: cover;
     position: relative;
