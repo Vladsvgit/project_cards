@@ -138,10 +138,11 @@ function renderTherapist(root, objectCard) {
 </div>
 `
   );
+
 }
 
 function showHide(element) {
-  element.target(displNone);
+  element.classList.toggle("displNone");
 
 }
 
@@ -156,15 +157,15 @@ function showHide(element) {
     }
   });
 }
-
-// sectionCards.addEventListener("click", (e) => {
-//   let elem = e.target.closest(".block-card")
-//   console.log(elem);
-//   let subtext = elem.content.querySelector(".block-cards__sublist")
-//   console.log(subtext);
-//   subtext.classList.toggle("displNone")
-// }
-// )
+// let cardd = document.querySelector()
+sectionCards.addEventListener("click", (e) => {
+  let elem = e.target.closest(".block-card")
+  console.log(elem);
+  let subtext = elem.querySelector(".block-cards__sublist")
+  console.log(subtext);
+  subtext.classList.toggle("displNone")
+}
+)
 
 
 
