@@ -19,6 +19,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // обработчик кнопки Create card
 createBtn.addEventListener("click", () => {
     createVisitForm.classList.remove("displNone");
+    const createVisitFormChilren = createVisitForm.querySelectorAll("div");
+    createVisitFormChilren.forEach(elem => {
+        elem.classList.add("displNone");
+    });
+    createVisitFormChilren[0].classList.remove("displNone");
 })
 
 // Filter
