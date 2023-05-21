@@ -1,39 +1,64 @@
-import {
-  loginBtn,
-  createBtn,
-  loginWind,
-  unloginBtn,
-  filterVisit,
-  chooseDoctor,
-  createVisitForm,
-} from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token } from "./constant.js";
 
-import { login } from "./login.js";
-import {
-  renderCreateVisitForm,
-  createVisit,
-  VisitCardiologist,
-  Visit,
-} from "./createvisit.js";
+import { login, getAllCards, noCardsMessage } from "./login.js";
+import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js"
+import { filter, filterData } from "./filter.js"
 
-import {renderAllCards} from "./renderCard.js"
+//Проверка на сохраненный токен
+document.addEventListener('DOMContentLoaded', () => {
+    if (token && token !== "Incorrect username or password") {
+        createBtn.classList.remove("displNone");
+        unloginBtn.classList.remove("displNone");
+        loginWind.classList.add("displNone");
+        filterVisit.classList.remove("displNone");
+        loginBtn.classList.add("displNone");
+        getAllCards(token)
+    }
+})
+
+// обработчик кнопки Create card
+createBtn.addEventListener("click", () => {
+    createVisitForm.classList.remove("displNone");
+})
+
+// Filter
+
+filterVisit.addEventListener("submit", e => {
+    e.preventDefault();
+    const inputPurpose = document.querySelector(".filterVisits__purpose").value;
+    const selectedStatus = document.querySelector('.filterVisits__status').value;
+    const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
+    filter(inputPurpose, selectedStatus, selectedUrgency);
+    console.log(filterData)
+
+    if (filterData.length === 0) {
+        noCardsMessage('There are no cards matching the search criteria')
+    } else {
+        document.querySelector('.main__message').remove();
+    }
+    e.target.reset()
+})
 
 loginBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  loginBtn.classList.add("displNone");
-  loginWind.classList.remove("displNone");
-  login();
+    // console.log("Login BTN");
+    e.preventDefault();
+    loginBtn.classList.add("displNone");
+    loginWind.classList.remove("displNone");
+    login();
 });
 
 unloginBtn.addEventListener("click", (e) => {
-  e.preventDefault();
-  localStorage.removeItem("token");
-  createBtn.classList.add("displNone");
-  unloginBtn.classList.add("displNone");
-  loginBtn.classList.remove("displNone");
-  filterVisit.classList.add("displNone");
-  createVisitForm.classList.add("displNone");
-  document.querySelector(".main__message").remove();
+    e.preventDefault();
+    localStorage.removeItem("token");
+    createBtn.classList.add("displNone");
+    unloginBtn.classList.add("displNone");
+    loginBtn.classList.remove("displNone");
+    filterVisit.classList.add("displNone");
+    createVisitForm.classList.add("displNone");
+    const firstMessage = document.querySelector(".main__message");
+    if (firstMessage) {
+        firstMessage.remove();
+    }
 });
 
 chooseDoctor.addEventListener("change", (e) => {
@@ -46,6 +71,12 @@ createVisitForm.addEventListener("submit", (e) => {
   createVisit(e.target);
   e.target.reset();
 });
+
+cancelVisitBtn.addEventListener("click", e => {
+    e.preventDefault();
+    cancelVisitForm();
+})
+
 
 //Classes
 

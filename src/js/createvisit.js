@@ -1,17 +1,4 @@
-import {
-  chooseDoctor,
-  titleInput,
-  discriptionInput,
-  urgencyInput,
-  nameInput,
-  preassureInput,
-  bmiInput,
-  heartIllInput,
-  ageInput,
-  lastVisitInput,
-  createVisitBtn,
-  token,
-} from "./constant.js";
+import { createVisitForm, chooseDoctor, titleInput, discriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtn, cancelVisitBtn, token } from "./constant.js";
 
 export const renderCreateVisitForm = function (doctor) {
   if (doctor === "Cardiologist") {
@@ -34,15 +21,17 @@ export const renderCreateVisitForm = function (doctor) {
     lastVisitInput.classList.add("displNone");
     lastVisitInput.lastElementChild.required = false;
 
-    createVisitBtn.classList.remove("displNone");
-    return;
-  } else if (doctor === "Dentist") {
-    titleInput.classList.remove("displNone");
-    discriptionInput.classList.remove("displNone");
-    urgencyInput.classList.remove("displNone");
-    nameInput.classList.remove("displNone");
-    preassureInput.classList.add("displNone");
-    preassureInput.lastElementChild.required = false;
+        createVisitBtn.classList.remove("displNone");
+        cancelVisitBtn.classList.remove("displNone");
+
+        return;
+    } else if (doctor === "Dentist") {
+        titleInput.classList.remove("displNone");
+        discriptionInput.classList.remove("displNone");
+        urgencyInput.classList.remove("displNone");
+        nameInput.classList.remove("displNone");
+        preassureInput.classList.add("displNone");
+        preassureInput.lastElementChild.required = false;
 
     bmiInput.classList.add("displNone");
     bmiInput.lastElementChild.required = false;
@@ -56,15 +45,16 @@ export const renderCreateVisitForm = function (doctor) {
     lastVisitInput.classList.remove("displNone");
     lastVisitInput.lastElementChild.required = true;
 
-    createVisitBtn.classList.remove("displNone");
-    return;
-  } else if (doctor === "Therapist") {
-    titleInput.classList.remove("displNone");
-    discriptionInput.classList.remove("displNone");
-    urgencyInput.classList.remove("displNone");
-    nameInput.classList.remove("displNone");
-    preassureInput.classList.add("displNone");
-    preassureInput.lastElementChild.required = false;
+        createVisitBtn.classList.remove("displNone");
+        cancelVisitBtn.classList.remove("displNone");
+        return;
+    } else if (doctor === "Therapist") {
+        titleInput.classList.remove("displNone");
+        discriptionInput.classList.remove("displNone");
+        urgencyInput.classList.remove("displNone");
+        nameInput.classList.remove("displNone");
+        preassureInput.classList.add("displNone");
+        preassureInput.lastElementChild.required = false;
 
     bmiInput.classList.add("displNone");
     bmiInput.lastElementChild.required = false;
@@ -78,9 +68,10 @@ export const renderCreateVisitForm = function (doctor) {
     ageInput.classList.remove("displNone");
     ageInput.lastElementChild.required = true;
 
-    createVisitBtn.classList.remove("displNone");
-    return;
-  }
+        createVisitBtn.classList.remove("displNone");
+        cancelVisitBtn.classList.remove("displNone");
+        return;
+    }
 };
 
 export const createVisit = (target) => {
@@ -117,55 +108,49 @@ export const createVisit = (target) => {
   }
 };
 
-export class Visit {
-  constructor(title, discription, urgency, fullName) {
-    this.title = title;
-    this.discription = discription;
-    this.urgency = urgency;
-    this.fullName = fullName;
-  }
+export const cancelVisitForm = () => {
+    createVisitForm.classList.add("displNone");
 }
-export class VisitCardiologist extends Visit {
-  constructor(
-    title,
-    discription,
-    urgency,
-    fullName,
-    pressure,
-    bodyIndex,
-    heartIll,
-    age
-  ) {
-    super(title, discription, urgency, fullName);
-    this.pressure = pressure;
-    this.bodyIndex = bodyIndex;
-    this.heartIll = heartIll;
-    this.age = age;
-  }
-  
-  sendToServer() {
-    // console.log(this);
-    fetch("https://ajax.test-danit.com/api/v2/cards", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`,
-      },
-      body: JSON.stringify({
-        doctor: "Cardiologist",
-        title: this.title,
-        description: this.description,
-        urgency: this.urgency,
-        fullName: this.fullName,
-        pressure: this.pressure,
-        bpi: this.bodyIndex,
-        heartIllness: this.heartIll,
-        age: this.age,
-      }),
-    })
-      .then((response) => response.json())
-      .then((response) => console.log(response));
-  }
+
+class Visit {
+    constructor(title, discription, urgency, fullName) {
+        this.title = title;
+        this.discription = discription;
+        this.urgency = urgency;
+        this.fullName = fullName
+    }
+};
+class VisitCardiologist extends Visit {
+    constructor(title, discription, urgency, fullName, pressure, bodyIndex, heartIll, age) {
+        super(title, discription, urgency, fullName);
+        this.pressure = pressure;
+        this.bodyIndex = bodyIndex;
+        this.heartIll = heartIll;
+        this.age = age
+    }
+    sendToServer() {
+        // console.log(this);
+        fetch("https://ajax.test-danit.com/api/v2/cards", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                doctor: 'Cardiologist',
+                title: this.title,
+                description: this.description,
+                urgency: this.urgency,
+                fullName: this.fullName,
+                pressure: this.pressure,
+                bpi: this.bodyIndex,
+                heartIllness: this.heartIll,
+                age: this.age
+            })
+        })
+            .then(response => response.json())
+            .then(response => console.log(response))
+    }
 
   renderCardiologist (root, objectCard) {
     let {fullName, id, title, discription, urgency, pressure, bpi, heartIll, age} = objectCard;

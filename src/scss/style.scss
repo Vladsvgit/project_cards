@@ -38,6 +38,9 @@ body {
 }
 
 .main {
+    min-height: 700px;
+    background-image: url(../images/main.jpg);
+    background-size: cover;
     position: relative;
 
     &__img {
@@ -72,6 +75,10 @@ body {
             display: flex;
             justify-content: space-between;
             align-items: center;
+
+            &:last-child {
+                justify-content: space-around;
+            }
         }
 
         &__btn {
@@ -85,6 +92,19 @@ body {
             box-shadow: 5px 5px 5px #ada1ba;
             cursor: pointer;
         }
+    }
+
+
+    &__cancelVisit__btn {
+        padding: 5px 10px;
+        font-size: 16px;
+        margin-top: 20px;
+        font-size: 16px;
+        background-color: #EEDDFF;
+        border: 2px solid #0d7ea0;
+        border-radius: 25px;
+        box-shadow: 5px 5px 5px #ada1ba;
+        cursor: pointer;
     }
 }
 
@@ -144,6 +164,17 @@ body {
         box-shadow: 5px 5px 5px #ada1ba;
         cursor: pointer;
     }
+
+    &__purpose::placeholder {
+        font-size: 14px
+    }
+}
+
+.filterForm {
+    border: 1px solid #0d7ea0;
+    border-radius: 25px;
+    box-shadow: 5px 5px 5px #ada1ba;
+    font-size: 16px;
 }
 
 .createVisit {
@@ -188,7 +219,7 @@ body {
     display: none;
 }
 
-div .displNone{
+div .displNone {
     display: none;
 }
 
@@ -202,3 +233,8 @@ div .displNone{
     z-index: 0;
 }
 
+.main__message {
+    color: red;
+    font-size: 25px;
+    margin-top: 35px;
+}
