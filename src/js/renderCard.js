@@ -157,14 +157,14 @@ function showHide(element) {
   });
 }
 
-sectionCards.addEventListener("click", (e) => {
-  let elem = e.target.closest(".block-card")
-  console.log(elem);
-  let subtext = elem.content.querySelector(".block-cards__sublist")
-  console.log(subtext);
-  subtext.classList.toggle("displNone")
-}
-)
+// sectionCards.addEventListener("click", (e) => {
+//   let elem = e.target.closest(".block-card")
+//   console.log(elem);
+//   let subtext = elem.content.querySelector(".block-cards__sublist")
+//   console.log(subtext);
+//   subtext.classList.toggle("displNone")
+// }
+// )
 
 
 

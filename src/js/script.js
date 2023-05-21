@@ -3,6 +3,7 @@ import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, 
 import { login, getAllCards, noCardsMessage } from "./login.js";
 import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js"
 import { filter, filterData } from "./filter.js"
+import {renderAllCards} from "./renderCard.js"
 
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {
