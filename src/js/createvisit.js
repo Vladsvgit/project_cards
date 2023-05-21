@@ -25,7 +25,7 @@ export const renderCreateVisitForm = function (doctor) {
 
         createVisitBtnBlock.classList.remove("displNone");
         return;
-        
+
     } else if (doctor === "Dentist") {
         titleInput.classList.remove("displNone");
         descriptionInput.classList.remove("displNone");
@@ -123,6 +123,7 @@ class VisitCardiologist extends Visit {
                 description: this.description,
                 urgency: this.urgency,
                 fullName: this.fullName,
+                status: "Open",
                 pressure: this.pressure,
                 bpi: this.bodyIndex,
                 heartIllness: this.heartIll,
@@ -154,6 +155,7 @@ class VisitDentist extends Visit {
                 description: this.description,
                 urgency: this.urgency,
                 fullName: this.fullName,
+                status: "Open",
                 lastVisitDate: this.lastVisitDate
             })
         })
@@ -182,6 +184,7 @@ class VisitTherapist extends Visit {
                 description: this.description,
                 urgency: this.urgency,
                 fullName: this.fullName,
+                status: "Open",
                 age: this.age
             })
         })
