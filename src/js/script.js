@@ -88,9 +88,9 @@ cancelVisitBtn.addEventListener("click", e => {
 //Classes
 
 class Modal {
-    constructor() {
-
-    }
+  constructor() {}
 }
 const modal = new Modal();
+
+// renderAllCards(arr, sectionCards);
 
