@@ -1,9 +1,9 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token, firstMessage } from "./constant.js";
 
 import { login, getAllCards, noCardsMessage } from "./login.js";
 import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js"
 import { filter, filterData } from "./filter.js"
-
+const firstMessage = document.querySelector(".main__message");
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {
     if (token && token !== "Incorrect username or password") {
@@ -30,13 +30,13 @@ filterVisit.addEventListener("submit", e => {
     const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
     filter(inputPurpose, selectedStatus, selectedUrgency);
     console.log(filterData)
-
     if (filterData.length === 0) {
         noCardsMessage('There are no cards matching the search criteria')
-    } else {
-        document.querySelector('.main__message').remove();
+    } else if (document.querySelector(".main__message")) {
+        document.querySelector(".main__message").remove();
     }
-    e.target.reset()
+
+    e.target.reset();
 })
 
 loginBtn.addEventListener("click", (e) => {
@@ -55,9 +55,8 @@ unloginBtn.addEventListener("click", (e) => {
     loginBtn.classList.remove("displNone");
     filterVisit.classList.add("displNone");
     createVisitForm.classList.add("displNone");
-    const firstMessage = document.querySelector(".main__message");
-    if (firstMessage) {
-        firstMessage.remove();
+    if (document.querySelector(".main__message")) {
+        document.querySelector(".main__message").remove();
     }
 });
 
