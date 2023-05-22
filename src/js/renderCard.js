@@ -1,4 +1,6 @@
-export {renderAllCards};
+import { sectionCards } from './constant';
+
+export { renderAllCards };
 
 
 
@@ -145,13 +147,13 @@ function showHide(element) {
 
 }
 
- function renderAllCards(arrayCards, root) {
+function renderAllCards(arrayCards, root) {
   arrayCards.forEach((element) => {
     if (element.doctor === "Cardiologist") {
       renderCardiologist(root, element);
-    }else if (element.doctor === "Dentist") {
+    } else if (element.doctor === "Dentist") {
       renderDentist(root, element);
-    }else if (element.doctor === "Therapist") {
+    } else if (element.doctor === "Therapist") {
       renderTherapist(root, element);
     }
   });
