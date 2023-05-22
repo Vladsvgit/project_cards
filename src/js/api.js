@@ -15,3 +15,17 @@
 
 
 // export {ArrayAllCards};
+
+export const postVisit = () => {
+    fetch("https://ajax.test-danit.com/api/v2/cards/login", {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json'
+  },
+  body: JSON.stringify({ email: 'your@email.com', password: 'password' })
+})
+  .then(response => response.text())
+  .then(token => console.log(token))
+}
+
+
