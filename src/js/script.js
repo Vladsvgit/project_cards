@@ -3,7 +3,7 @@ import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, 
 import { login, getAllCards, noCardsMessage } from "./login.js";
 import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js";
 import { filter, filterData } from "./filter.js";
-// import {renderAllCards} from "./renderCard.js";
+import {renderAllCards} from "./renderCard.js";
 
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {
@@ -31,15 +31,17 @@ createBtn.addEventListener("click", () => {
 
 filterVisit.addEventListener("submit", e => {
     e.preventDefault();
+    sectionCards.innerHTML = "";
     const inputPurpose = document.querySelector(".filterVisits__purpose").value;
     const selectedStatus = document.querySelector('.filterVisits__status').value;
     const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
     filter(inputPurpose, selectedStatus, selectedUrgency);
     console.log(filterData)
+    renderAllCards(filterData, sectionCards)
 
     if (filterData.length === 0) {
         noCardsMessage('There are no cards matching the search criteria')
-    } else {
+    } else if (document.querySelector('.main__message')) {
         document.querySelector('.main__message').remove();
     }
     e.target.reset()
@@ -61,9 +63,8 @@ unloginBtn.addEventListener("click", (e) => {
     loginBtn.classList.remove("displNone");
     filterVisit.classList.add("displNone");
     createVisitForm.classList.add("displNone");
-    const firstMessage = document.querySelector(".main__message");
-    if (firstMessage) {
-        firstMessage.remove();
+    if (document.querySelector('.main__message')) {
+        document.querySelector('.main__message').remove();
     }
     sectionCards.innerHTML = "";
 });
