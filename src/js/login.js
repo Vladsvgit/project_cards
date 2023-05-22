@@ -1,4 +1,6 @@
-import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitForm, backGroundShadow, token } from "./constant.js";
+import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitForm, backGroundShadow, token, sectionCards } from "./constant.js";
+import { renderAllCards } from "./renderCard.js";
+
 export let dataBase = [];
 export const login = () => {
 
@@ -66,6 +68,7 @@ export function getAllCards(token) {
         .then((data) => {
             console.log(data);
             dataBase = [...data];
+            renderAllCards(dataBase, sectionCards);
             if (dataBase.length === 0) {
                 noCardsMessage("No items have been added")
             }

@@ -1,9 +1,10 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token, firstMessage } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token, sectionCards } from "./constant.js";
 
 import { login, getAllCards, noCardsMessage } from "./login.js";
-import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js"
-import { filter, filterData } from "./filter.js"
-const firstMessage = document.querySelector(".main__message");
+import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js";
+import { filter, filterData } from "./filter.js";
+// import {renderAllCards} from "./renderCard.js";
+
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {
     if (token && token !== "Incorrect username or password") {
@@ -19,6 +20,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // обработчик кнопки Create card
 createBtn.addEventListener("click", () => {
     createVisitForm.classList.remove("displNone");
+    const createVisitFormChilren = createVisitForm.querySelectorAll("div");
+    createVisitFormChilren.forEach(elem => {
+        elem.classList.add("displNone");
+    });
+    createVisitFormChilren[0].classList.remove("displNone");
 })
 
 // Filter
@@ -30,13 +36,13 @@ filterVisit.addEventListener("submit", e => {
     const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
     filter(inputPurpose, selectedStatus, selectedUrgency);
     console.log(filterData)
+
     if (filterData.length === 0) {
         noCardsMessage('There are no cards matching the search criteria')
-    } else if (document.querySelector(".main__message")) {
-        document.querySelector(".main__message").remove();
+    } else {
+        document.querySelector('.main__message').remove();
     }
-
-    e.target.reset();
+    e.target.reset()
 })
 
 loginBtn.addEventListener("click", (e) => {
@@ -55,20 +61,22 @@ unloginBtn.addEventListener("click", (e) => {
     loginBtn.classList.remove("displNone");
     filterVisit.classList.add("displNone");
     createVisitForm.classList.add("displNone");
-    if (document.querySelector(".main__message")) {
-        document.querySelector(".main__message").remove();
+    const firstMessage = document.querySelector(".main__message");
+    if (firstMessage) {
+        firstMessage.remove();
     }
+    sectionCards.innerHTML = "";
 });
 
-chooseDoctor.addEventListener("change", e => {
-    e.preventDefault();
-    renderCreateVisitForm(e.target.value);
-})
+chooseDoctor.addEventListener("change", (e) => {
+  e.preventDefault();
+  renderCreateVisitForm(e.target.value);
+});
 
-createVisitForm.addEventListener("submit", e => {
-    e.preventDefault();
-    createVisit(e.target);
-    e.target.reset();
+createVisitForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  createVisit(e.target);
+  e.target.reset();
 });
 
 cancelVisitBtn.addEventListener("click", e => {

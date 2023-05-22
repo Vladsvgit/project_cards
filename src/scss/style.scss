@@ -1,4 +1,5 @@
 @import "reset";
+@import "./block-cards";
 
 body {
     font-family: 'Lato', sans-serif;
@@ -37,7 +38,8 @@ body {
 }
 
 .main {
-    min-height: 700px;
+    height: calc(100vh - 99px);
+    overflow-y: scroll;
     background-image: url(../images/main.jpg);
     background-size: cover;
     position: relative;
@@ -63,6 +65,7 @@ body {
         border-radius: 25px;
         box-shadow: 5px 5px 5px #ada1ba;
         position: absolute;
+        z-index: 2;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
@@ -113,7 +116,7 @@ body {
     border: 2px solid #085369;
     background-color: bisque;
     display: flex;
-    z-index: 1;
+    z-index: 2;
     flex-direction: column;
     position: absolute;
     top: 57px;
@@ -146,9 +149,10 @@ body {
     padding: 15px 20px;
     border: 2px solid #085369;
     background-color: bisque;
-    position: absolute;
+    position: sticky;
     top: 0;
     right: 0;
+    z-index: 2;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -169,7 +173,9 @@ body {
     }
 }
 
+
 .filterForm {
+    padding: 5px 10px;
     border: 1px solid #0d7ea0;
     border-radius: 25px;
     box-shadow: 5px 5px 5px #ada1ba;
