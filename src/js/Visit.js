@@ -7,5 +7,4 @@ export class Visit {
         this.urgency = urgency;
         this.fullName = fullName
     }
-
 };
