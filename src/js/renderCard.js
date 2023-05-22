@@ -16,7 +16,7 @@ function renderCardiologist(root, objectCard) {
   } = objectCard;
   root.insertAdjacentHTML(
     "beforeend",
-    `<div class="block-card card">
+    `<div class="block-card card" id="${id}">
   <button class="block-cards__close btn">x</button>
 <ul>
 <li class="full-name">Fullname : ${fullName}</li>
@@ -53,7 +53,7 @@ function renderDentist(root, objectCard) {
   } = objectCard;
   root.insertAdjacentHTML(
     "beforeend",
-    `<div class="block-card card">
+    `<div class="block-card card" id="${id}">
   <button class="block-cards__close btn">x</button>
 <ul>
 <li class="full-name">Fullname : ${fullName}</li>
@@ -87,12 +87,11 @@ function renderTherapist(root, objectCard) {
   } = objectCard;
   root.insertAdjacentHTML(
     "beforeend",
-    `<div class="block-card card">
+    `<div class="block-card card" id="${id}">
   <button class="block-cards__close btn">x</button>
 <ul>
 <li class="full-name">Fullname : ${fullName}</li>
 <li class="doctor">Doctor : Therapist</li>
-<li id="${id}" class="displNone">${id}</li>
 <li>
   <ul class="block-cards__sublist displNone">
     <li class="title">Title : ${title}</li>
