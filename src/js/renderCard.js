@@ -2,7 +2,6 @@ export {renderAllCards};
 
 
 
-const sectionCards = document.querySelector(".block-cards");
 // {title,discription,urgency,fullName,pressure,bpi,heartIll,lastVisitDate,age,doctor,id}
 const obj111 = {
   age: "32",
