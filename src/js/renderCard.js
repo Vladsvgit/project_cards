@@ -2,6 +2,7 @@ import { sectionCards } from './constant';
 
 export { renderAllCards };
 
+<<<<<<< HEAD
 
 
 // {title,discription,urgency,fullName,pressure,bpi,heartIll,lastVisitDate,age,doctor,id}
@@ -31,6 +32,9 @@ const obj222 = {
 
 const arr = [obj111, obj222];
 
+=======
+const sectionCards = document.querySelector(".block-cards");
+>>>>>>> develop-main
 
 
 function renderCardiologist(root, objectCard) {
@@ -67,7 +71,7 @@ function renderCardiologist(root, objectCard) {
 </ul>
 <button class="block-cards__edit btn">edit</button>
 <button class="block-cards__show btn">show more</button>
-<button class="block-cards__hide displNone">Show less</button>
+<button class="block-cards__hide btn displNone">Show less</button>
 </div>
 `
   );
@@ -95,13 +99,13 @@ function renderDentist(root, objectCard) {
     <li class="title">Title : ${title}</li>
     <li class="discription">Discription : ${discription}</li>
     <li class="urgency">Urgency : ${urgency}</li>
-    <li class="lastVisitDate">${lastVisitDate}</li>
+    <li class="lastVisitDate">Last visit date : ${lastVisitDate}</li>
   </ul>
 </li>
 </ul>
 <button class="block-cards__edit btn">edit</button>
 <button class="block-cards__show btn">show more</button>
-<button class="block-cards__hide displNone">Show less</button>
+<button class="block-cards__hide btn displNone">Show less</button>
 </div>
 `
   );
@@ -135,17 +139,16 @@ function renderTherapist(root, objectCard) {
 </ul>
 <button class="block-cards__edit btn">edit</button>
 <button class="block-cards__show btn" onclick= "">show more</button>
-<button class="block-cards__hide displNone">Show less</button>
+<button class="block-cards__hide btn displNone">Show less</button>
 </div>
 `
   );
 
 }
 
-function showHide(element) {
-  element.classList.toggle("displNone");
-
-}
+// function showHide(element) {
+//   element.classList.toggle("displNone");
+//}
 
 function renderAllCards(arrayCards, root) {
   arrayCards.forEach((element) => {
@@ -158,18 +161,19 @@ function renderAllCards(arrayCards, root) {
     }
   });
 }
-// let cardd = document.querySelector()
+
+
 sectionCards.addEventListener("click", (e) => {
-  let elem = e.target.closest(".block-card")
-  console.log(elem);
-  let subtext = elem.querySelector(".block-cards__sublist")
-  console.log(subtext);
-  subtext.classList.toggle("displNone")
+  if (e.target.classList.contains("block-cards__show") || e.target.classList.contains("block-cards__hide")){
+  let elem = e.target.closest(".block-card");
+  
+  let subtext = elem.querySelector(".block-cards__sublist");
+  let btnMore = elem.querySelector(".block-cards__show");
+  let btnLess = elem.querySelector(".block-cards__hide");
+  
+  subtext.classList.toggle("displNone");
+  btnMore.classList.toggle("displNone");
+  btnLess.classList.toggle("displNone");
+  }
 }
 )
-
-
-
-
-// ArrayAllCards();
-// renderAllCards(arr, sectionCards);

@@ -22,8 +22,12 @@
 .block-cards{
     display: flex;
     flex-direction: column;
+    gap: 5px;
     align-items: center;
     position: relative;
-    z-index: 1;
     top: 5px;
+
+    & li {
+        line-height: 22px;
+    }
 }
