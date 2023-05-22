@@ -36,8 +36,8 @@ filterVisit.addEventListener("submit", e => {
     const selectedStatus = document.querySelector('.filterVisits__status').value;
     const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
     filter(inputPurpose, selectedStatus, selectedUrgency);
-    console.log(filterData)
-    renderAllCards(filterData, sectionCards)
+    console.log(filterData);
+    renderAllCards(filterData, sectionCards);
 
     if (filterData.length === 0) {
         noCardsMessage('There are no cards matching the search criteria')

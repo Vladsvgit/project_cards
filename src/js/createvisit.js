@@ -9,17 +9,17 @@ export const renderCreateVisitForm = function (doctor) {
         preassureInput.classList.remove("displNone");
         preassureInput.lastElementChild.required = true;
 
-    bmiInput.classList.remove("displNone");
-    bmiInput.lastElementChild.required = true;
+        bmiInput.classList.remove("displNone");
+        bmiInput.lastElementChild.required = true;
 
-    heartIllInput.classList.remove("displNone");
-    heartIllInput.lastElementChild.required = true;
+        heartIllInput.classList.remove("displNone");
+        heartIllInput.lastElementChild.required = true;
 
-    ageInput.classList.remove("displNone");
-    ageInput.lastElementChild.required = true;
+        ageInput.classList.remove("displNone");
+        ageInput.lastElementChild.required = true;
 
-    lastVisitInput.classList.add("displNone");
-    lastVisitInput.lastElementChild.required = false;
+        lastVisitInput.classList.add("displNone");
+        lastVisitInput.lastElementChild.required = false;
 
         createVisitBtnBlock.classList.remove("displNone");
         return;
@@ -32,17 +32,17 @@ export const renderCreateVisitForm = function (doctor) {
         preassureInput.classList.add("displNone");
         preassureInput.lastElementChild.required = false;
 
-    bmiInput.classList.add("displNone");
-    bmiInput.lastElementChild.required = false;
+        bmiInput.classList.add("displNone");
+        bmiInput.lastElementChild.required = false;
 
-    heartIllInput.classList.add("displNone");
-    heartIllInput.lastElementChild.required = false;
+        heartIllInput.classList.add("displNone");
+        heartIllInput.lastElementChild.required = false;
 
-    ageInput.classList.add("displNone");
-    ageInput.lastElementChild.required = false;
+        ageInput.classList.add("displNone");
+        ageInput.lastElementChild.required = false;
 
-    lastVisitInput.classList.remove("displNone");
-    lastVisitInput.lastElementChild.required = true;
+        lastVisitInput.classList.remove("displNone");
+        lastVisitInput.lastElementChild.required = true;
 
         createVisitBtnBlock.classList.remove("displNone");
         return;
@@ -55,17 +55,17 @@ export const renderCreateVisitForm = function (doctor) {
         preassureInput.classList.add("displNone");
         preassureInput.lastElementChild.required = false;
 
-    bmiInput.classList.add("displNone");
-    bmiInput.lastElementChild.required = false;
+        bmiInput.classList.add("displNone");
+        bmiInput.lastElementChild.required = false;
 
-    heartIllInput.classList.add("displNone");
-    heartIllInput.lastElementChild.required = false;
+        heartIllInput.classList.add("displNone");
+        heartIllInput.lastElementChild.required = false;
 
-    lastVisitInput.classList.add("displNone");
-    lastVisitInput.lastElementChild.required = false;
+        lastVisitInput.classList.add("displNone");
+        lastVisitInput.lastElementChild.required = false;
 
-    ageInput.classList.remove("displNone");
-    ageInput.lastElementChild.required = true;
+        ageInput.classList.remove("displNone");
+        ageInput.lastElementChild.required = true;
 
         createVisitBtnBlock.classList.remove("displNone");
         return;
@@ -76,7 +76,7 @@ export const createVisit = (target) => {
     if (chooseDoctor.value === "Cardiologist") {
         const visitCardiologist = new VisitCardiologist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.pressure.value, target.bmi.value, target.heartIll.value, target.age.value);
         visitCardiologist.sendToServer();
-        
+
     } else if (chooseDoctor.value === "Dentist") {
         const visitDentist = new VisitDentist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.lastVisit.value);
         visitDentist.sendToServer();
@@ -132,11 +132,11 @@ class VisitCardiologist extends Visit {
             .then(response => console.log(response))
     }
 
-  renderCardiologist (root, objectCard) {
-    let {fullName, id, title, description, urgency, pressure, bpi, heartIll, age} = objectCard;
-   root.insertAdjacentHTML(
-    "beforeend",
-    `<ul class="block-cards__cards-list">
+    renderCardiologist(root, objectCard) {
+        let { fullName, id, title, description, urgency, pressure, bpi, heartIll, age } = objectCard;
+        root.insertAdjacentHTML(
+            "beforeend",
+            `<ul class="block-cards__cards-list">
   <li class="full-name">Fullname : ${fullName}</li>
   <li class="doctor">Doctor : Cardiologist</li>
   <li id="${id}" class="displNone">${id}</li>
@@ -155,8 +155,8 @@ class VisitCardiologist extends Visit {
   <button class="block-cards__edit">edit</button>
   <button class="block-cards__show">show more</button>
 </ul>`
-  );
-  }
+        );
+    }
 }
 
 class VisitDentist extends Visit {
