@@ -76,6 +76,7 @@ export const createVisit = (target) => {
     if (chooseDoctor.value === "Cardiologist") {
         const visitCardiologist = new VisitCardiologist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.pressure.value, target.bmi.value, target.heartIll.value, target.age.value);
         visitCardiologist.sendToServer();
+        
     } else if (chooseDoctor.value === "Dentist") {
         const visitDentist = new VisitDentist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.lastVisit.value);
         visitDentist.sendToServer();
@@ -132,7 +133,7 @@ class VisitCardiologist extends Visit {
     }
 
   renderCardiologist (root, objectCard) {
-    let {fullName, id, title, discription, urgency, pressure, bpi, heartIll, age} = objectCard;
+    let {fullName, id, title, description, urgency, pressure, bpi, heartIll, age} = objectCard;
    root.insertAdjacentHTML(
     "beforeend",
     `<ul class="block-cards__cards-list">
@@ -142,7 +143,7 @@ class VisitCardiologist extends Visit {
   <li>
     <ul class="block-cards__sublist ">
       <li class="title">Title : ${title}</li>
-      <li class="discription">Discription : ${discription}</li>
+      <li class="description">description : ${description}</li>
       <li class="urgency">Urgency : ${urgency}</li>
       <li class="pressure">Pressure : ${pressure}</li>
       <li class="bodyIndex">BodyIndex : ${bpi}</li>

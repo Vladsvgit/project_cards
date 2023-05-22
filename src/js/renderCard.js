@@ -1,48 +1,13 @@
-import { sectionCards } from './constant';
+import { sectionCards } from './constant.js';
 
 export { renderAllCards };
-
-<<<<<<< HEAD
-
-
-// {title,discription,urgency,fullName,pressure,bpi,heartIll,lastVisitDate,age,doctor,id}
-const obj111 = {
-  age: "32",
-  bpi: "12",
-  doctor: "Cardiologist",
-  fullName: "Artem Lyasenko",
-  heartIllness: "Ok",
-  id: 170513,
-  pressure: "120/80",
-  title: "Heart ill",
-  urgency: "High",
-};
-
-const obj222 = {
-  age: "44",
-  bpi: "12",
-  doctor: "Cardiologist",
-  fullName: "Makar Pupko",
-  heartIllness: "Ok",
-  id: 270533,
-  pressure: "120/80",
-  title: "Heart ill",
-  urgency: "High",
-};
-
-const arr = [obj111, obj222];
-
-=======
-const sectionCards = document.querySelector(".block-cards");
->>>>>>> develop-main
-
 
 function renderCardiologist(root, objectCard) {
   let {
     fullName,
     id,
     title,
-    discription,
+    description,
     urgency,
     pressure,
     bpi,
@@ -60,7 +25,7 @@ function renderCardiologist(root, objectCard) {
 <li>
   <ul class="block-cards__sublist displNone">
     <li class="title">Title : ${title}</li>
-    <li class="discription">Discription : ${discription}</li>
+    <li class="description">Description : ${description}</li>
     <li class="urgency">Urgency : ${urgency}</li>
     <li class="pressure">Pressure : ${pressure}</li>
     <li class="bodyIndex">BodyIndex : ${bpi}</li>
@@ -82,7 +47,7 @@ function renderDentist(root, objectCard) {
     fullName,
     id,
     title,
-    discription,
+    description,
     urgency,
     lastVisitDate,
   } = objectCard;
@@ -97,7 +62,7 @@ function renderDentist(root, objectCard) {
 <li>
   <ul class="block-cards__sublist displNone">
     <li class="title">Title : ${title}</li>
-    <li class="discription">Discription : ${discription}</li>
+    <li class="description">Description : ${description}</li>
     <li class="urgency">Urgency : ${urgency}</li>
     <li class="lastVisitDate">Last visit date : ${lastVisitDate}</li>
   </ul>
@@ -116,7 +81,7 @@ function renderTherapist(root, objectCard) {
     fullName,
     id,
     title,
-    discription,
+    description,
     urgency,
     age,
   } = objectCard;
@@ -131,7 +96,7 @@ function renderTherapist(root, objectCard) {
 <li>
   <ul class="block-cards__sublist displNone">
     <li class="title">Title : ${title}</li>
-    <li class="discription">Discription : ${discription}</li>
+    <li class="description">Description : ${description}</li>
     <li class="urgency">Urgency : ${urgency}</li>
     <li class="age">Age : ${age}</li>
   </ul>
@@ -164,16 +129,16 @@ function renderAllCards(arrayCards, root) {
 
 
 sectionCards.addEventListener("click", (e) => {
-  if (e.target.classList.contains("block-cards__show") || e.target.classList.contains("block-cards__hide")){
-  let elem = e.target.closest(".block-card");
-  
-  let subtext = elem.querySelector(".block-cards__sublist");
-  let btnMore = elem.querySelector(".block-cards__show");
-  let btnLess = elem.querySelector(".block-cards__hide");
-  
-  subtext.classList.toggle("displNone");
-  btnMore.classList.toggle("displNone");
-  btnLess.classList.toggle("displNone");
+  if (e.target.classList.contains("block-cards__show") || e.target.classList.contains("block-cards__hide")) {
+    let elem = e.target.closest(".block-card");
+
+    let subtext = elem.querySelector(".block-cards__sublist");
+    let btnMore = elem.querySelector(".block-cards__show");
+    let btnLess = elem.querySelector(".block-cards__hide");
+
+    subtext.classList.toggle("displNone");
+    btnMore.classList.toggle("displNone");
+    btnLess.classList.toggle("displNone");
   }
 }
 )
