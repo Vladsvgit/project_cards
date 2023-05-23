@@ -1,8 +1,8 @@
 import { Visit } from "./Visit.js";
 
 export class VisitTherapist extends Visit {
-    constructor(purpose, description, urgency, fullName, age) {
-        super(purpose, description, urgency, fullName);
+    constructor(purpose, description, urgency, fullName, status, age) {
+        super(purpose, description, urgency, fullName, status);
         this.age = age
     }
     sendToServer() {

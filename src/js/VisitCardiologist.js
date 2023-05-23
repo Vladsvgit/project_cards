@@ -1,8 +1,8 @@
 import { Visit } from "./Visit.js";
 
 export class VisitCardiologist extends Visit {
-    constructor(title, description, urgency, fullName, pressure, bodyIndex, heartIll, age) {
-        super(title, description, urgency, fullName);
+    constructor(title, description, urgency, fullName, status, pressure, bodyIndex, heartIll, age) {
+        super(title, description, urgency, fullName, status);
         this.pressure = pressure;
         this.bodyIndex = bodyIndex;
         this.heartIll = heartIll;
@@ -44,7 +44,7 @@ export class VisitCardiologist extends Visit {
   <li>
     <ul class="block-cards__sublist ">
       <li class="title">Title : ${title}</li>
-      <li class="description">description : ${description}</li>
+      <li class="description">Description : ${description}</li>
       <li class="urgency">Urgency : ${urgency}</li>
       <li class="pressure">Pressure : ${pressure}</li>
       <li class="bodyIndex">BodyIndex : ${bpi}</li>

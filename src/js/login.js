@@ -1,5 +1,6 @@
 import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitForm, backGroundShadow, token, sectionCards } from "./constant.js";
 import { renderAllCards } from "./renderCard.js";
+import { getToken } from "./api.js";
 
 export let dataBase = [];
 export const login = () => {
@@ -75,4 +76,6 @@ export function getAllCards(token) {
             // console.log(data.length);
         })
         .catch(err => console.log(err))
-}
+};
+
+

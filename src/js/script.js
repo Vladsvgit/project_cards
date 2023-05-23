@@ -3,7 +3,7 @@ import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, 
 import { login, getAllCards, noCardsMessage } from "./login.js";
 import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js";
 import { filter, filterData } from "./filter.js";
-import {renderAllCards} from "./renderCard.js";
+import { renderAllCards } from "./renderCard.js";
 
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {
@@ -70,26 +70,27 @@ unloginBtn.addEventListener("click", (e) => {
 });
 
 chooseDoctor.addEventListener("change", (e) => {
-  e.preventDefault();
-  renderCreateVisitForm(e.target.value);
+    e.preventDefault();
+    renderCreateVisitForm(e.target.value);
 });
 
 createVisitForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  createVisit(e.target);
-  e.target.reset();
+    e.preventDefault();
+    createVisit(e.target);
+    e.target.reset();
 });
 
 cancelVisitBtn.addEventListener("click", e => {
     e.preventDefault();
     cancelVisitForm();
-})
+    createVisitForm.reset();
 
+})
 
 //Classes
 
 class Modal {
-  constructor() {}
+    constructor() { }
 }
 const modal = new Modal();
 

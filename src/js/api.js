@@ -1,3 +1,5 @@
+// import { mail, pass } from "./login.js";
+
 export const getToken = (mail, pass) => {
     fetch("https://ajax.test-danit.com/api/v2/cards/login", {
         method: 'POST',
@@ -66,7 +68,7 @@ export const getOneCards = (cardId, token) => {
 };
 
 export const editCard = (editObj, cardId, token) => {
-    fetch('https://ajax.test-danit.com/api/v2/cards/${cardId}', {
+    fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json',
