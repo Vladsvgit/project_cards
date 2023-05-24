@@ -1,72 +1,90 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token, sectionCards } from "./constant.js";
+import {
+  loginBtn,
+  createBtn,
+  loginWind,
+  unloginBtn,
+  filterVisit,
+  chooseDoctor,
+  createVisitForm,
+  cancelVisitBtn,
+  token,
+  sectionCards,
+} from "./constant.js";
 
 import { login, getAllCards, noCardsMessage } from "./login.js";
-import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js";
+import {
+  renderCreateVisitForm,
+  createVisit,
+  cancelVisitForm,
+} from "./createvisit.js";
 import { filter, filterData } from "./filter.js";
-import {renderAllCards} from "./renderCard.js";
+import { renderAllCards } from "./renderCard.js";
+import { VisitCardiologist } from "./VisitCardiologist.js";
 
 //Проверка на сохраненный токен
-document.addEventListener('DOMContentLoaded', () => {
-    if (token && token !== "Incorrect username or password") {
-        createBtn.classList.remove("displNone");
-        unloginBtn.classList.remove("displNone");
-        loginWind.classList.add("displNone");
-        filterVisit.classList.remove("displNone");
-        loginBtn.classList.add("displNone");
-        getAllCards(token)
-    }
-})
+document.addEventListener("DOMContentLoaded", () => {
+  if (token && token !== "Incorrect username or password") {
+    createBtn.classList.remove("displNone");
+    unloginBtn.classList.remove("displNone");
+    loginWind.classList.add("displNone");
+    filterVisit.classList.remove("displNone");
+    loginBtn.classList.add("displNone");
+    getAllCards(token);
+  }
+});
 
 // обработчик кнопки Create card
 createBtn.addEventListener("click", () => {
-    createVisitForm.classList.remove("displNone");
-    const createVisitFormChilren = createVisitForm.querySelectorAll("div");
-    createVisitFormChilren.forEach(elem => {
-        elem.classList.add("displNone");
-    });
-    createVisitFormChilren[0].classList.remove("displNone");
-})
+  createVisitForm.classList.remove("displNone");
+  const createVisitFormChilren = createVisitForm.querySelectorAll("div");
+  createVisitFormChilren.forEach((elem) => {
+    elem.classList.add("displNone");
+  });
+  createVisitFormChilren[0].classList.remove("displNone");
+});
 
 // Filter
 
-filterVisit.addEventListener("submit", e => {
-    e.preventDefault();
-    sectionCards.innerHTML = "";
-    const inputPurpose = document.querySelector(".filterVisits__purpose").value;
-    const selectedStatus = document.querySelector('.filterVisits__status').value;
-    const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
-    filter(inputPurpose, selectedStatus, selectedUrgency);
-    console.log(filterData);
-    renderAllCards(filterData, sectionCards);
+filterVisit.addEventListener("submit", (e) => {
+  e.preventDefault();
+  sectionCards.innerHTML = "";
+  const inputPurpose = document.querySelector(".filterVisits__purpose").value;
+  const selectedStatus = document.querySelector(".filterVisits__status").value;
+  const selectedUrgency = document.querySelector(
+    ".filterVisits__urgency"
+  ).value;
+  filter(inputPurpose, selectedStatus, selectedUrgency);
+  console.log(filterData);
+  renderAllCards(filterData, sectionCards);
 
-    if (filterData.length === 0) {
-        noCardsMessage('There are no cards matching the search criteria')
-    } else if (document.querySelector('.main__message')) {
-        document.querySelector('.main__message').remove();
-    }
-    e.target.reset()
-})
+  if (filterData.length === 0) {
+    noCardsMessage("There are no cards matching the search criteria");
+  } else if (document.querySelector(".main__message")) {
+    document.querySelector(".main__message").remove();
+  }
+  e.target.reset();
+});
 
 loginBtn.addEventListener("click", (e) => {
-    // console.log("Login BTN");
-    e.preventDefault();
-    loginBtn.classList.add("displNone");
-    loginWind.classList.remove("displNone");
-    login();
+  // console.log("Login BTN");
+  e.preventDefault();
+  loginBtn.classList.add("displNone");
+  loginWind.classList.remove("displNone");
+  login();
 });
 
 unloginBtn.addEventListener("click", (e) => {
-    e.preventDefault();
-    localStorage.removeItem("token");
-    createBtn.classList.add("displNone");
-    unloginBtn.classList.add("displNone");
-    loginBtn.classList.remove("displNone");
-    filterVisit.classList.add("displNone");
-    createVisitForm.classList.add("displNone");
-    if (document.querySelector('.main__message')) {
-        document.querySelector('.main__message').remove();
-    }
-    sectionCards.innerHTML = "";
+  e.preventDefault();
+  localStorage.removeItem("token");
+  createBtn.classList.add("displNone");
+  unloginBtn.classList.add("displNone");
+  loginBtn.classList.remove("displNone");
+  filterVisit.classList.add("displNone");
+  createVisitForm.classList.add("displNone");
+  if (document.querySelector(".main__message")) {
+    document.querySelector(".main__message").remove();
+  }
+  sectionCards.innerHTML = "";
 });
 
 chooseDoctor.addEventListener("change", (e) => {
@@ -80,18 +98,52 @@ createVisitForm.addEventListener("submit", (e) => {
   e.target.reset();
 });
 
-cancelVisitBtn.addEventListener("click", e => {
-    e.preventDefault();
-    cancelVisitForm();
-})
+cancelVisitBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  cancelVisitForm();
+});
+  
+
+//................................................................
+
+const objCardiologist = {
+    age: "32",
+    bodyIndex: "12",
+    doctor: "Cardiologist",
+    fullName: "Artem Lyasenko",
+    heartIll: "Ok",
+    id: 170513,
+    pressure: "120/80",
+    title: "Heart ill",
+    urgency: "High",
+  };
+
+  function gete (obj, root) {
+    let {title, description, urgency, fullName, pressure, bodyIndex, heartIll, age, id} = obj;
+    const obj22 = new VisitCardiologist(title, description, urgency, fullName, pressure, bodyIndex, heartIll, age, id);
+    obj22.sendForm(root);
+    console.log(obj22.title, obj22.pressure, obj22.title, obj22.pressure);
+
+  };
+
+  gete(objCardiologist, sectionCards );
+// const obj22 = new VisitCardiologist();
+// console.log(obj22);
+// obj22.sendForm(sectionCards);
+// console.log(obj22.title, obj22.pressure, obj22.title, obj22.pressure);
 
 
 //Classes
 
-class Modal {
-  constructor() {}
-}
-const modal = new Modal();
+const form1 = document.querySelector("#test1");
+const imputName = document.querySelector ("#GET-name");
+
+// form1.imputName.value = "bomber"; 
+// class Modal {
+//   constructor() {}
+// }
+// const modal = new Modal();
 
 // renderAllCards(arr, sectionCards);
+
 

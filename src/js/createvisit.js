@@ -95,6 +95,24 @@ export const cancelVisitForm = () => {
     createVisitForm.classList.add("displNone");
 }
 
+
+//................................................................
+export const sendVisit = (doctor) => {
+    if (doctor === "Cardiologist") {
+        const visitCardiologist = new VisitCardiologist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.pressure.value, target.bmi.value, target.heartIll.value, target.age.value);
+        visitCardiologist.sendToServer();
+
+    } else if (doctor === "Dentist") {
+        const visitDentist = new VisitDentist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.lastVisit.value);
+        visitDentist.sendToServer();
+    } else if (doctor === "Therapist") {
+        const visitTherapist = new VisitTherapist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.age.value);
+        visitTherapist.sendToServer();
+    }
+}
+
+//................................................................
+
 // class Visit {
 //     constructor(title, description, urgency, fullName) {
 //         this.title = title;
