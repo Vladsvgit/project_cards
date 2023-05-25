@@ -37,13 +37,24 @@ export const createCard = (cardObj, token) => {
         .then(response => console.log(response))
 };
 
-export const deleteCard = (cardId, token) => {
+export const deleteCardApi = (cardId) => {
     fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`
         },
-    })
+    }).then((response) =>{
+        if(response.ok){
+            sectionCards.innerHTML = "";
+            getAllCardsApi()
+            // document.getElementById(`${cardId}`).remove();
+        }
+    } )
+        .catch(error => {
+            {
+                console.error(error)
+            }
+        })
 };
 
 export const getAllCards = (token) => {
@@ -63,18 +74,6 @@ export const getAllCards = (token) => {
     });
 
     return allCards
-};
-
-export const getOneCards = (cardId, token) => {
-    fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
 };
 
 export const editCard = (editObj, cardId, token) => {
