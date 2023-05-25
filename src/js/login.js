@@ -1,7 +1,8 @@
 import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitForm, backGroundShadow, token, sectionCards } from "./constant.js";
 import { renderAllCards } from "./renderCard.js";
+import {getAllCardsApi} from "./api.js"
 
-export let dataBase = [];
+
 export const login = () => {
 
     // console.log("login");
@@ -11,7 +12,7 @@ export const login = () => {
         const passwordForm = document.querySelector('.login__password').value;
         e.preventDefault();
         siteLogin(e, emailForm, passwordForm);
-        // if(emailForm.trim() !== '' && passwordForm.trim() !== ''){   // закоментировано для тестов не удалять
+        // if(emailForm.trim() !== '' && passwordForm.trim() !== ''){   // валидация логина и пароля.. НЕ удалять!
         //     siteLogin(e,emailForm, passwordForm );
         // }else{
         //     alert("Values cannot be empty");
@@ -42,7 +43,7 @@ function siteLogin(e, email, password) {
                 loginWind.classList.add("displNone");
                 filterVisit.classList.remove("displNone");
                 backGroundShadow.classList.add("displNone");
-                getAllCards(token)
+                getAllCardsApi()
             } else {
                 alert("Incorrect username or password");
                 e.target.reset();
@@ -56,23 +57,23 @@ export function noCardsMessage(message) {
     firstMessage.textContent = message;
     mainConternt.append(firstMessage);
 }
-export function getAllCards(token) {
-    fetch("https://ajax.test-danit.com/api/v2/cards", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => response.json())
-        // .then(data => console.log(data))
-        .then((data) => {
-            console.log(data);
-            dataBase = [...data];
-            renderAllCards(dataBase, sectionCards);
-            if (dataBase.length === 0) {
-                noCardsMessage("No items have been added")
-            }
-            // console.log(data.length);
-        })
-        .catch(err => console.log(err))
-}
+// export function getAllCards(token) {
+//     fetch("https://ajax.test-danit.com/api/v2/cards", {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${token}`
+//         }
+//     }).then(response => response.json())
+//         .then((data) => {
+//             console.log(data);
+//             dataBase = [...data];
+//             renderAllCards(dataBase);
+//             if (dataBase.length === 0) {
+//                 noCardsMessage("No items have been added")
+//             }
+//         })
+//         .catch(err => console.log(err))
+//         // .catch(() => noCardsMessage("Error loading database"))
+//
+// }

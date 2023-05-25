@@ -1,3 +1,8 @@
+import {sectionCards, token} from "./constant.js";
+import {renderAllCards} from "./renderCard.js";
+import {noCardsMessage} from "./login.js";
+export let dataBase = [];
+
 export const getToken = (mail, pass) => {
     fetch("https://ajax.test-danit.com/api/v2/cards/login", {
         method: 'POST',
@@ -10,7 +15,7 @@ export const getToken = (mail, pass) => {
         .then(token => console.log(token))
 };
 
-export const createCard = (cardObj, token) => {
+export const createCardApi = (cardObj) => {
     fetch("https://ajax.test-danit.com/api/v2/cards", {
         method: 'POST',
         headers: {
@@ -23,16 +28,48 @@ export const createCard = (cardObj, token) => {
         .then(response => console.log(response))
 };
 
-export const deleteCard = (cardId, token) => {
+export const deleteCardApi = (cardId) => {
     fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
         method: 'DELETE',
         headers: {
             'Authorization': `Bearer ${token}`
         },
-    })
+    }).then((response) =>{
+        if(response.ok){
+            sectionCards.innerHTML = "";
+            getAllCardsApi()
+            // document.getElementById(`${cardId}`).remove();
+        }
+    } )
+        .catch(error => {
+            {
+                console.error(error)
+            }
+        })
 };
 
-export const getAllCards = (token) => {
+// export const getAllCards = () => {
+//     fetch("https://ajax.test-danit.com/api/v2/cards", {
+//         method: 'GET',
+//         headers: {
+//             'Content-Type': 'application/json',
+//             'Authorization': `Bearer ${token}`
+//         }
+//     }).then(response => response.json())
+//         // .then(data => console.log(data))
+//         .then((data) => {
+//             console.log(data);
+//             dataBase = [...data];
+//             renderAllCards(dataBase, sectionCards);
+//             if (dataBase.length === 0) {
+//                 noCardsMessage("No items have been added")
+//             }
+//             // console.log(data.length);
+//         })
+//         .catch(err => console.log(err))
+// };
+
+export function getAllCardsApi() {
     fetch("https://ajax.test-danit.com/api/v2/cards", {
         method: 'GET',
         headers: {
@@ -40,30 +77,19 @@ export const getAllCards = (token) => {
             'Authorization': `Bearer ${token}`
         }
     }).then(response => response.json())
-        // .then(data => console.log(data))
         .then((data) => {
             console.log(data);
             dataBase = [...data];
-            renderAllCards(dataBase, sectionCards);
             if (dataBase.length === 0) {
                 noCardsMessage("No items have been added")
+            } else {
+                renderAllCards(dataBase);
             }
-            // console.log(data.length);
         })
         .catch(err => console.log(err))
-};
+    // .catch(() => noCardsMessage("Error loading database"))
 
-export const getOneCards = (cardId, token) => {
-    fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => response.json())
-        .then(data => console.log(data))
-        .catch(err => console.log(err))
-};
+}
 
 export const editCard = (editObj, cardId, token) => {
     fetch('https://ajax.test-danit.com/api/v2/cards/${cardId}', {
