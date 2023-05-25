@@ -1,9 +1,10 @@
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token, sectionCards } from "./constant.js";
+import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, sectionCards } from "./constant.js";
 
-import { login, getAllCards, noCardsMessage } from "./login.js";
+import { login, noCardsMessage } from "./login.js";
 import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js";
 import { filter, filterData } from "./filter.js";
 import { renderAllCards } from "./renderCard.js";
+import { token, getAllCards } from "./api.js";
 
 //Проверка на сохраненный токен
 document.addEventListener('DOMContentLoaded', () => {

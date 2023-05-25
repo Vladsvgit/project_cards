@@ -1,18 +1,30 @@
 // import { mail, pass } from "./login.js";
+export let token = "";
 
 export const getToken = (mail, pass) => {
-    fetch("https://ajax.test-danit.com/api/v2/cards/login", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' }) // добавить почту и пароль
+    const tokenRequest = new Promise((resolve, reject) => {
+        return fetch("https://ajax.test-danit.com/api/v2/cards/login", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' }) // добавить почту и пароль
+        })
+            .then(response => response.text())
+            .then(data => {
+                console.log(data);
+                resolve(token = data);
+            })
+            .catch((err) => reject(err));
     })
-        .then(response => response.text())
-        .then(token => console.log(token))
+
+    return tokenRequest;
 };
 
 export const createCard = (cardObj, token) => {
+    // const newCard = new Promise((resolve, reject) => {
+
+    // })
     fetch("https://ajax.test-danit.com/api/v2/cards", {
         method: 'POST',
         headers: {
@@ -35,24 +47,22 @@ export const deleteCard = (cardId, token) => {
 };
 
 export const getAllCards = (token) => {
-    fetch("https://ajax.test-danit.com/api/v2/cards", {
-        method: 'GET',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        }
-    }).then(response => response.json())
-        // .then(data => console.log(data))
-        .then((data) => {
-            console.log(data);
-            dataBase = [...data];
-            renderAllCards(dataBase, sectionCards);
-            if (dataBase.length === 0) {
-                noCardsMessage("No items have been added")
+    const allCards = new Promise((resolve, reject) => {
+        fetch("https://ajax.test-danit.com/api/v2/cards", {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
             }
-            // console.log(data.length);
-        })
-        .catch(err => console.log(err))
+        }).then(response => response.json())
+            .then(data => {
+                // console.log(data);
+                resolve(data);
+            })
+            .catch((err) => reject(err));
+    });
+
+    return allCards
 };
 
 export const getOneCards = (cardId, token) => {
