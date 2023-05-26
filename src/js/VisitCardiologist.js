@@ -62,10 +62,10 @@ export class VisitCardiologist extends Visit {
         );
     }
 
-    sendForm(root) {
+    renderSendForm(root) {
         root.insertAdjacentHTML(
             "beforeend",
-        `<form action="" method="get" class="main__createVisit">
+        `<form action="" method="get" class="main__createVisit send-form">
             <div class="main__createVisit__doctor">
                 <label for="Doctor">Doctor </label>
                 <select class="main__createVisit__doctors">
@@ -78,12 +78,12 @@ export class VisitCardiologist extends Visit {
 
             <div class="main__createVisit__title ">
                 <label for="title">Aim of visit:</label>
-                <input type="text" name="title" value= ${this.title} required>
+                <input type="text" name="title" value= "${this.title}" required>
             </div>
 
             <div class="main__createVisit__description ">
                 <label for="description">Short description visit: </label>
-                <input type="text" name="description" value= ${this.description} required>
+                <input type="text" name="description" value= "${this.description}" required>
             </div>
 
             <div class="main__createVisit__urgency ">
@@ -98,27 +98,27 @@ export class VisitCardiologist extends Visit {
 
             <div class="main__createVisit__name ">
                 <label for="name">Enter your name: </label>
-                <input type="text" name="name" value= ${this.fullName} required>
+                <input type="text" name="name" value= "${this.fullName}" required>
             </div>
 
             <div class="main__createVisit__pressure ">
                 <label for="pressure">Pressure : </label>
-                <input type="text" name="pressure" value= ${this.pressure} required>
+                <input type="text" name="pressure" value= "${this.pressure}" required>
             </div>
 
             <div class="main__createVisit__bmi ">
                 <label for="bmi">Enter your BMI: </label>
-                <input type="text" name="bmi" value= ${this.bodyIndex} required>
+                <input type="text" name="bmi" value= "${this.bodyIndex}" required>
             </div>
 
             <div class="main__createVisit__heartIll ">
                 <label for="heartIll">Enter your diseases of the cardiovascular system: </label>
-                <input type="text" name="heartIll" value= ${this.heartIll} required>
+                <input type="text" name="heartIll" value= "${this.heartIll}" required>
             </div>
 
             <div class="main__createVisit__age ">
                 <label for="age">Enter your age: </label>
-                <input type="number" name="age" value= ${this.age} required>
+                <input type="number" name="age" value= "${this.age}" required>
             </div>
             
             <div class="main__createVisit__btnBlock">
@@ -128,14 +128,6 @@ export class VisitCardiologist extends Visit {
 
         </form>`
         )
-    
-    //     createVisitForm.classList.remove("displNone");
-    //     renderCreateVisitForm("Cardiologist");
-    //     createVisitForm.titleInput.value = this.title;
-    //     createVisitForm.descriptionInput.value = this.description;
-    //     createVisitForm.urgencyInput.value = this.urgenc
-    //  .title.value = title this.description.value, target.urgency.value, target.name.value, target.pressure.value, target.bmi.value, target.heartIll.value, target.age.value);
-    //         editCard();
     }
 }
 

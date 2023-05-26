@@ -11,7 +11,7 @@ import {
   sectionCards,
 } from "./constant.js";
 
-import { login, getAllCards, noCardsMessage } from "./login.js";
+import { login, getAllCards, noCardsMessage, dataBase } from "./login.js";
 import {
   renderCreateVisitForm,
   createVisit,
@@ -102,48 +102,13 @@ cancelVisitBtn.addEventListener("click", (e) => {
   e.preventDefault();
   cancelVisitForm();
 });
-  
 
 //................................................................
 
-const objCardiologist = {
-    age: "32",
-    bodyIndex: "12",
-    doctor: "Cardiologist",
-    fullName: "Artem Lyasenko",
-    heartIll: "Ok",
-    id: 170513,
-    pressure: "120/80",
-    title: "Heart ill",
-    urgency: "High",
-  };
-
-  function gete (obj, root) {
-    let {title, description, urgency, fullName, pressure, bodyIndex, heartIll, age, id} = obj;
-    const obj22 = new VisitCardiologist(title, description, urgency, fullName, pressure, bodyIndex, heartIll, age, id);
-    obj22.sendForm(root);
-    console.log(obj22.title, obj22.pressure, obj22.title, obj22.pressure);
-
-  };
-
-  gete(objCardiologist, sectionCards );
-// const obj22 = new VisitCardiologist();
-// console.log(obj22);
-// obj22.sendForm(sectionCards);
-// console.log(obj22.title, obj22.pressure, obj22.title, obj22.pressure);
 
 
-//Classes
 
-const form1 = document.querySelector("#test1");
-const imputName = document.querySelector ("#GET-name");
 
-// form1.imputName.value = "bomber"; 
-// class Modal {
-//   constructor() {}
-// }
-// const modal = new Modal();
 
-// renderAllCards(arr, sectionCards);
 
 
