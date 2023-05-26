@@ -1,8 +1,20 @@
-import { createVisitForm, chooseDoctor, titleInput, descriptionInput, urgencyInput, nameInput, preassureInput, bmiInput, heartIllInput, ageInput, lastVisitInput, createVisitBtnBlock, } from "./constant.js";
-import { VisitCardiologist } from "./VisitCardiologist.js";
-import { VisitDentist } from "./VisitDentist.js";
-import { VisitTherapist } from "./VisitTherapist.js";
-
+import {
+    createVisitForm,
+    chooseDoctor,
+    titleInput,
+    descriptionInput,
+    urgencyInput,
+    nameInput,
+    preassureInput,
+    bmiInput,
+    heartIllInput,
+    ageInput,
+    lastVisitInput,
+    createVisitBtnBlock,
+} from "./constant.js";
+import {VisitCardiologist} from "./VisitCardiologist.js";
+import {VisitDentist} from "./VisitDentist.js";
+import {VisitTherapist} from "./VisitTherapist.js";
 
 
 export const renderCreateVisitForm = function (doctor) {
@@ -79,14 +91,16 @@ export const renderCreateVisitForm = function (doctor) {
 
 export const createVisit = (target) => {
     if (chooseDoctor.value === "Cardiologist") {
-        const visitCardiologist = new VisitCardiologist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.pressure.value, target.bmi.value, target.heartIll.value, target.age.value);
+        const visitCardiologist = new VisitCardiologist(target.chooseDoctor.value, target.title.value, target.description.value, target.urgency.value, target.name.value, target.pressure.value, target.bmi.value, target.heartIll.value, target.age.value);
+        visitCardiologist.renderCard()
         visitCardiologist.sendToServer();
-
     } else if (chooseDoctor.value === "Dentist") {
-        const visitDentist = new VisitDentist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.lastVisit.value);
+        const visitDentist = new VisitDentist(target.chooseDoctor.value, target.title.value, target.description.value, target.urgency.value, target.name.value, target.lastVisit.value);
+        visitDentist.renderCard()
         visitDentist.sendToServer();
     } else if (chooseDoctor.value === "Therapist") {
-        const visitTherapist = new VisitTherapist(target.title.value, target.description.value, target.urgency.value, target.name.value, target.age.value);
+        const visitTherapist = new VisitTherapist(target.chooseDoctor.value, target.title.value, target.description.value, target.urgency.value, target.name.value, target.age.value);
+        visitTherapist.renderCard()
         visitTherapist.sendToServer();
     }
 }

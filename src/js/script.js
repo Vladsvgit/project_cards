@@ -11,51 +11,56 @@ import {
   sectionCards,
 } from "./constant.js";
 
-import { login, getAllCards, noCardsMessage, dataBase } from "./login.js";
+import { login, noCardsMessage, dataBase } from "./login.js";
 import {
   renderCreateVisitForm,
   createVisit,
   cancelVisitForm,
 } from "./createvisit.js";
 import { filter, filterData } from "./filter.js";
-import { renderAllCards } from "./renderCard.js";
-import { VisitCardiologist } from "./VisitCardiologist.js";
+import {renderAllCards} from "./renderCard.js";
+import {getAllCardsApi} from "./api.js";
+import { Visit} from "./visit.js";
+// import { VisitCardiologist} from "./VisitCardiologist";
+// import { VisitDentist} from "./VisitDentist";
+// import { VisitTherapist} from "./VisitTherapist";
 
 //Проверка на сохраненный токен
-document.addEventListener("DOMContentLoaded", () => {
-  if (token && token !== "Incorrect username or password") {
-    createBtn.classList.remove("displNone");
-    unloginBtn.classList.remove("displNone");
-    loginWind.classList.add("displNone");
-    filterVisit.classList.remove("displNone");
-    loginBtn.classList.add("displNone");
-    getAllCards(token);
-  }
-});
+document.addEventListener('DOMContentLoaded', () => {
+    if (token && token !== "Incorrect username or password") {
+        createBtn.classList.remove("displNone");
+        unloginBtn.classList.remove("displNone");
+        loginWind.classList.add("displNone");
+        filterVisit.classList.remove("displNone");
+        loginBtn.classList.add("displNone");
+        getAllCardsApi()
+
+    }
+})
 
 // обработчик кнопки Create card
 createBtn.addEventListener("click", () => {
-  createVisitForm.classList.remove("displNone");
-  const createVisitFormChilren = createVisitForm.querySelectorAll("div");
-  createVisitFormChilren.forEach((elem) => {
-    elem.classList.add("displNone");
-  });
-  createVisitFormChilren[0].classList.remove("displNone");
-});
+    createVisitForm.classList.remove("displNone");
+    const createVisitFormChilren = createVisitForm.querySelectorAll("div");
+    createVisitFormChilren.forEach(elem => {
+        elem.classList.add("displNone");
+    });
+    createVisitFormChilren[0].classList.remove("displNone");
+
+})
 
 // Filter
 
-filterVisit.addEventListener("submit", (e) => {
-  e.preventDefault();
-  sectionCards.innerHTML = "";
-  const inputPurpose = document.querySelector(".filterVisits__purpose").value;
-  const selectedStatus = document.querySelector(".filterVisits__status").value;
-  const selectedUrgency = document.querySelector(
-    ".filterVisits__urgency"
-  ).value;
-  filter(inputPurpose, selectedStatus, selectedUrgency);
-  console.log(filterData);
-  renderAllCards(filterData, sectionCards);
+filterVisit.addEventListener("submit", e => {
+    e.preventDefault();
+    sectionCards.innerHTML = "";
+    const inputPurpose = document.querySelector(".filterVisits__purpose").value;
+    const selectedStatus = document.querySelector('.filterVisits__status').value;
+    const selectedUrgency = document.querySelector('.filterVisits__urgency').value;
+    filter(inputPurpose, selectedStatus, selectedUrgency);
+    console.log(filterData);
+    renderAllCards(filterData);
+    console.log(document.getElementById('173128'))
 
   if (filterData.length === 0) {
     noCardsMessage("There are no cards matching the search criteria");
@@ -66,11 +71,10 @@ filterVisit.addEventListener("submit", (e) => {
 });
 
 loginBtn.addEventListener("click", (e) => {
-  // console.log("Login BTN");
-  e.preventDefault();
-  loginBtn.classList.add("displNone");
-  loginWind.classList.remove("displNone");
-  login();
+    e.preventDefault();
+    loginBtn.classList.add("displNone");
+    loginWind.classList.remove("displNone");
+    login();
 });
 
 unloginBtn.addEventListener("click", (e) => {
@@ -88,14 +92,15 @@ unloginBtn.addEventListener("click", (e) => {
 });
 
 chooseDoctor.addEventListener("change", (e) => {
-  e.preventDefault();
-  renderCreateVisitForm(e.target.value);
+    e.preventDefault();
+    renderCreateVisitForm(e.target.value);
 });
 
 createVisitForm.addEventListener("submit", (e) => {
-  e.preventDefault();
-  createVisit(e.target);
-  e.target.reset();
+    e.preventDefault();
+    createVisit(e.target);
+    e.target.reset();
+    cancelVisitForm();
 });
 
 cancelVisitBtn.addEventListener("click", (e) => {
@@ -110,5 +115,11 @@ cancelVisitBtn.addEventListener("click", (e) => {
 
 
 
-
-
+sectionCards.onclick = ((e) => {
+    if(e.target.classList.contains('block-cards__close')){
+        const card = e.target.closest('.block-card')
+        console.log(card.id)
+        const visitDel = new Visit
+        visitDel.deleteVisit(card.id)
+    }
+});
