@@ -1,81 +1,138 @@
-const objCardiologist = {
-    age: "32",
-    description: "Help me",
-    bodyIndex: "12",
-    doctor: "Cardiologist",
-    fullName: "Artem Lyasenko",
-    heartIll: "Ok",
-    id: 170513,
-    pressure: "120/80",
-    title: "Heart ill",
-    urgency: "High",
-  };
-  
-  function assignValuesForm(obj, root) {
-    let {
-      title,
-      description,
-      doctor,
-      urgency,
-      fullName,
-      pressure,
-      bodyIndex,
-      heartIll,
-      age,
-      id,
-    } = obj;
-    const valueDefault = new VisitCardiologist(
-      title,
-      description,
-      urgency,
-      fullName,
-      pressure,
-      bodyIndex,
-      heartIll,
-      age,
-      id
+import { VisitCardiologist } from "./VisitCardiologist.js";
+import { VisitDentist } from "./VisitDentist.js";
+import { VisitTherapist } from "./VisitTherapist.js";
+import { token } from "./constant.js";
+import { editCard } from "./api.js";
+
+//................................................................
+function assignValuesFormCardiologist(obj) {
+  let {
+    doctor,
+    title,
+    description,
+    urgency,
+    fullName,
+    pressure,
+    bodyIndex,
+    heartIll,
+    age,
+    status,
+    id,
+  } = obj;
+  const valueDefault = new VisitCardiologist(
+    doctor,
+    title,
+    description,
+    urgency,
+    fullName,
+    pressure,
+    bodyIndex,
+    heartIll,
+    age,
+    status,
+    id
+  );
+  valueDefault.renderSendForm(document.body);
+  let currentSendForm = document.querySelector(".send-form");
+  currentSendForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let sendObj = new VisitCardiologist(
+      valueDefault.doctor,
+      currentSendForm.title.value,
+      currentSendForm.description.value,
+      currentSendForm.urgency.value,
+      currentSendForm.fullName.value,
+      currentSendForm.pressure.value,
+      currentSendForm.bodyIndex.value,
+      currentSendForm.heartIll.value,
+      currentSendForm.age.value,
+      valueDefault.status,
+      valueDefault.id
     );
-    valueDefault.renderSendForm(root);
-  
-    
-  }
-  
-    // assignValuesForm(objCardiologist, document.body);
-  
-  const sendForm = document.querySelector(".send-form");
-  // sendForm.addEventListener("submit", (event) => {
-  //   event.preventDefault();
-  //   let sendObj = new VisitCardiologist(
-  //     sendForm.title.value,
-  //     sendForm.description.value,
-  //     sendForm.urgency.value,
-  //     sendForm.name.value,
-  //     sendForm.pressure.value,
-  //     sendForm.bmi.value,
-  //     sendForm.heartIll.value,
-  //     sendForm.age.value
-  //   );
-  //   console.log(sendObj);
-  //   // sendObj.sendToServer();
-  // });
-  
-  sectionCards.addEventListener("click", (event) => {
-    console.log(event.target);
-    if (event.target.classList.contains("block-cards__edit")){
-      let blockCard = event.target.closest(".block-card");
-       console.log(blockCard.id);
-    }
+    editCard(sendObj, sendObj.id, token);
+    currentSendForm.remove();
+  });
 }
-  )
-  
-  
-    //  const sendCardId = 12321
-  
-    //  const targetCard = dataBase.map((data) => {
-    //   if(data.id === sendCardId){
-    //     assignValuesForm(data, document.body);
-  
-    //   }
-    //  })
-  
-    
+
+function assignValuesFormDentist(obj) {
+  let {
+    doctor,
+    title,
+    description,
+    urgency,
+    fullName,
+    lastVisitDate,
+    status,
+    id,
+  } = obj;
+  const valueDefault = new VisitDentist(
+    doctor,
+    title,
+    description,
+    urgency,
+    fullName,
+    lastVisitDate,
+    status,
+    id
+  );
+  valueDefault.renderSendForm(document.body);
+  let currentSendForm = document.querySelector(".send-form");
+  currentSendForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let sendObj = new VisitDentist(
+      valueDefault.doctor,
+      currentSendForm.title.value,
+      currentSendForm.description.value,
+      currentSendForm.urgency.value,
+      currentSendForm.fullName.value,
+      currentSendForm.lastVisitDate.value,
+      valueDefault.status,
+      valueDefault.id
+    );
+    editCard(sendObj, sendObj.id, token);
+    currentSendForm.remove();
+  });
+}
+
+function assignValuesFormTherapist(obj) {
+  let { doctor, title, description, urgency, fullName, age, status, id } = obj;
+  const valueDefault = new VisitTherapist(
+    doctor,
+    title,
+    description,
+    urgency,
+    fullName,
+    age,
+    status,
+    id
+  );
+  valueDefault.renderSendForm(document.body);
+  let currentSendForm = document.querySelector(".send-form");
+  currentSendForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    let sendObj = new VisitTherapist(
+      valueDefault.doctor,
+      currentSendForm.title.value,
+      currentSendForm.description.value,
+      currentSendForm.urgency.value,
+      currentSendForm.fullName.value,
+      currentSendForm.age.value,
+      valueDefault.status,
+      valueDefault.id
+    );
+    editCard(sendObj, sendObj.id, token);
+    currentSendForm.remove();
+  });
+}
+
+export function getCurrentDoctor(card) {
+  if (card.doctor == "Cardiologist") {
+    assignValuesFormCardiologist(card);
+  } else if (card.doctor == "Dentist") {
+    assignValuesFormDentist(card);
+  } else if (card.doctor == "Therapist") {
+    assignValuesFormTherapist(card);
+  } else {
+    console.log("doctor not found");
+  }
+}

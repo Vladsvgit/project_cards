@@ -44,7 +44,7 @@ export class VisitCardiologist extends Visit {
     renderSendForm(root) {
         root.insertAdjacentHTML(
             "beforeend",
-        `<form action="" method="get" class="main__createVisit send-form">
+        `<form class="main__createVisit send-form">
             <div class="main__createVisit__doctor">
                 <label for="Doctor">Doctor </label>
                 <select class="main__createVisit__doctors">
@@ -77,7 +77,7 @@ export class VisitCardiologist extends Visit {
 
             <div class="main__createVisit__name ">
                 <label for="name">Enter your name: </label>
-                <input type="text" name="name" value= "${this.fullName}" required>
+                <input type="text" name="fullName" value= "${this.fullName}" required>
             </div>
 
             <div class="main__createVisit__pressure ">
@@ -87,7 +87,7 @@ export class VisitCardiologist extends Visit {
 
             <div class="main__createVisit__bmi ">
                 <label for="bmi">Enter your BMI: </label>
-                <input type="text" name="bmi" value= "${this.bodyIndex}" required>
+                <input type="text" name="bodyIndex" value= "${this.bodyIndex}" required>
             </div>
 
             <div class="main__createVisit__heartIll ">
@@ -101,8 +101,7 @@ export class VisitCardiologist extends Visit {
             </div>
             
             <div class="main__createVisit__btnBlock">
-                <button class="main__createVisit__btn " type="submit"> Submit </button>
-                <button class="main__cancelVisit__btn " type="reset"> Cancel </button>
+                <button class="main__createVisit__btn " type="submit" > Submit </button>
             </div>
 
         </form>`
