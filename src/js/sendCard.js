@@ -34,6 +34,7 @@ function assignValuesFormCardiologist(obj) {
   );
   valueDefault.renderSendForm(document.body);
   let currentSendForm = document.querySelector(".send-form");
+  defaultUrgency(valueDefault,currentSendForm);
   currentSendForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let sendObj = new VisitCardiologist(
@@ -77,6 +78,7 @@ function assignValuesFormDentist(obj) {
   );
   valueDefault.renderSendForm(document.body);
   let currentSendForm = document.querySelector(".send-form");
+  defaultUrgency(valueDefault,currentSendForm);
   currentSendForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let sendObj = new VisitDentist(
@@ -108,6 +110,7 @@ function assignValuesFormTherapist(obj) {
   );
   valueDefault.renderSendForm(document.body);
   let currentSendForm = document.querySelector(".send-form");
+  defaultUrgency(valueDefault,currentSendForm);
   currentSendForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let sendObj = new VisitTherapist(
@@ -134,5 +137,15 @@ export function getCurrentDoctor(card) {
     assignValuesFormTherapist(card);
   } else {
     console.log("doctor not found");
+  }
+}
+
+export function defaultUrgency(objCard, root) {
+  if(objCard.urgency == "High"){
+root.urgency[0].setAttribute("selected", '');
+  }else if(objCard.urgency == "Normal"){
+    root.urgency[1].setAttribute("selected" , '');
+  }else if(objCard.urgency == "Low"){
+    root.urgency[2].setAttribute("selected" , '');
   }
 }
