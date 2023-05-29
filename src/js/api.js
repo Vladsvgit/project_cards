@@ -37,6 +37,19 @@ export const createCard = (cardObj, token) => {
         .then(response => console.log(response))
 };
 
+export const createCardApi = (cardObj) => {
+    fetch("https://ajax.test-danit.com/api/v2/cards", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(cardObj)
+    })
+        .then(response => response.json())
+        .then(response => console.log(response))
+};
+
 export const deleteCardApi = (cardId) => {
     fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
         method: 'DELETE',
