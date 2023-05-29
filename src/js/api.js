@@ -1,9 +1,10 @@
-// import { mail, pass } from "./login.js";
-export let token = "";
+import {sectionCards, token} from "./constant.js";
+import {renderAllCards} from "./renderCard.js";
+import {noCardsMessage} from "./login.js";
+export let dataBase = [];
 
 export const getToken = (mail, pass) => {
-    const tokenRequest = new Promise((resolve, reject) => {
-        return fetch("https://ajax.test-danit.com/api/v2/cards/login", {
+    fetch("https://ajax.test-danit.com/api/v2/cards/login", {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -11,30 +12,7 @@ export const getToken = (mail, pass) => {
             body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' }) // добавить почту и пароль
         })
             .then(response => response.text())
-            .then(data => {
-                console.log(data);
-                resolve(token = data);
-            })
-            .catch((err) => reject(err));
-    })
-
-    return tokenRequest;
-};
-
-export const createCard = (cardObj, token) => {
-    // const newCard = new Promise((resolve, reject) => {
-
-    // })
-    fetch("https://ajax.test-danit.com/api/v2/cards", {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(cardObj)
-    })
-        .then(response => response.json())
-        .then(response => console.log(response))
+        .then(token => console.log(token))
 };
 
 export const createCardApi = (cardObj) => {
