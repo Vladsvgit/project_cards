@@ -34,7 +34,8 @@ function assignValuesFormCardiologist(obj) {
   );
   valueDefault.renderSendForm(document.body);
   let currentSendForm = document.querySelector(".send-form");
-  defaultUrgency(valueDefault,currentSendForm);
+  getDefaultStatus(valueDefault,currentSendForm);
+  getDefaultUrgency(valueDefault,currentSendForm);
   currentSendForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let sendObj = new VisitCardiologist(
@@ -47,7 +48,7 @@ function assignValuesFormCardiologist(obj) {
       currentSendForm.bodyIndex.value,
       currentSendForm.heartIll.value,
       currentSendForm.age.value,
-      valueDefault.status,
+      currentSendForm.status.value,
       valueDefault.id
     );
     editCard(sendObj, sendObj.id, token);
@@ -78,7 +79,8 @@ function assignValuesFormDentist(obj) {
   );
   valueDefault.renderSendForm(document.body);
   let currentSendForm = document.querySelector(".send-form");
-  defaultUrgency(valueDefault,currentSendForm);
+  getDefaultStatus(valueDefault,currentSendForm);
+  getDefaultUrgency(valueDefault,currentSendForm);
   currentSendForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let sendObj = new VisitDentist(
@@ -88,7 +90,7 @@ function assignValuesFormDentist(obj) {
       currentSendForm.urgency.value,
       currentSendForm.fullName.value,
       currentSendForm.lastVisitDate.value,
-      valueDefault.status,
+      currentSendForm.status.value,
       valueDefault.id
     );
     editCard(sendObj, sendObj.id, token);
@@ -110,7 +112,8 @@ function assignValuesFormTherapist(obj) {
   );
   valueDefault.renderSendForm(document.body);
   let currentSendForm = document.querySelector(".send-form");
-  defaultUrgency(valueDefault,currentSendForm);
+  getDefaultStatus(valueDefault,currentSendForm);
+  getDefaultUrgency(valueDefault,currentSendForm);
   currentSendForm.addEventListener("submit", (e) => {
     e.preventDefault();
     let sendObj = new VisitTherapist(
@@ -120,7 +123,7 @@ function assignValuesFormTherapist(obj) {
       currentSendForm.urgency.value,
       currentSendForm.fullName.value,
       currentSendForm.age.value,
-      valueDefault.status,
+      currentSendForm.status.value,
       valueDefault.id
     );
     editCard(sendObj, sendObj.id, token);
@@ -140,12 +143,20 @@ export function getCurrentDoctor(card) {
   }
 }
 
-export function defaultUrgency(objCard, root) {
+function getDefaultUrgency(objCard, root) {
   if(objCard.urgency == "High"){
-root.urgency[0].setAttribute("selected", '');
+root.urgency[0].setAttribute("selected",'');
   }else if(objCard.urgency == "Normal"){
-    root.urgency[1].setAttribute("selected" , '');
+    root.urgency[1].setAttribute("selected",'');
   }else if(objCard.urgency == "Low"){
-    root.urgency[2].setAttribute("selected" , '');
+    root.urgency[2].setAttribute("selected",'');
+  }
+}
+
+function getDefaultStatus(objCard, root) {
+  if(objCard.status == "Open"){
+root.status[0].setAttribute("selected",'');
+  }else if(objCard.status == "Done"){
+    root.status[1].setAttribute("selected",'');
   }
 }

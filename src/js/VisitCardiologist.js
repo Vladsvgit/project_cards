@@ -64,8 +64,8 @@ export class VisitCardiologist extends Visit {
             <div>
                <label for="status">Status:</label>
                <select  name="status">
-                    <option class="filterVisits__status__item" value="Open">Open</option>
-                    <option class="filterVisits__status__item" value="Done">Done</option>
+                    <option value="Open">Open</option>
+                    <option value="Done">Done</option>
                </select>
             </div>
     
