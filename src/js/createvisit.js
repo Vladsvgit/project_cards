@@ -107,9 +107,6 @@ export const createVisit = (target) => {
 
 export const cancelVisitForm = () => {
     createVisitForm.classList.add("displNone");
-<<<<<<< HEAD
-}
-=======
 }
 
 
@@ -255,4 +252,3 @@ export const sendVisit = (doctor) => {
 //             .then(response => console.log(response))
 //     }
 // };
->>>>>>> develop-main

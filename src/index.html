@@ -44,10 +44,26 @@
                 <button type="submit" class="login__item login__btn">LOGIN</button>
             </form>
         </header>
+        <form class="filterVisits displNone">
+            <input class="filterVisits__purpose filterForm" type="text" placeholder="Please enter purpose of visit">
+            <select class="filterVisits__status filterForm">
+                <option class="filterVisits__status__item" value="all">All</option>
+                <option class="filterVisits__status__item" value="Open">Open</option>
+                <option class="filterVisits__status__item" value="Done">Done</option>
+            </select>
+            <select class="filterVisits__urgency filterForm">
+                <option class="filterVisits__urgency__item" value="all">All</option>
+                <option class="filterVisits__urgency__item" value="High">High</option>
+                <option class="filterVisits__urgency__item" value="Normal">Normal</option>
+                <option class="filterVisits__urgency__item" value="Low">Low</option>
+            </select>
+            <button class="filterVisits__btn" type="submit">Search</button>
+        </form>
         <section class="main">
             <!-- <img class="main__img" src="./images/main.jpg" alt="main.jpg"> -->
             <div class="backGroundShadow displNone"></div>
             <form action="" method="get" class="main__createVisit displNone">
+                <div class="main__createVisit__header">Please fill form to create visit</div>
                 <div class="main__createVisit__doctor">
                     <label for="Doctor">Doctor </label>
                     <select class="main__createVisit__doctors" name="chooseDoctor">
@@ -104,21 +120,7 @@
                 </div>
 
             </form>
-            <form class="filterVisits displNone">
-                <input class="filterVisits__purpose filterForm" type="text" placeholder="Please enter purpose of visit">
-                <select class="filterVisits__status filterForm">
-                    <option class="filterVisits__status__item" value="all">All</option>
-                    <option class="filterVisits__status__item" value="Open">Open</option>
-                    <option class="filterVisits__status__item" value="Done">Done</option>
-                </select>
-                <select class="filterVisits__urgency filterForm">
-                    <option class="filterVisits__urgency__item" value="all">All</option>
-                    <option class="filterVisits__urgency__item" value="High">High</option>
-                    <option class="filterVisits__urgency__item" value="Normal">Normal</option>
-                    <option class="filterVisits__urgency__item" value="Low">Low</option>
-                </select>
-                <button class="filterVisits__btn" type="submit">Search</button>
-            </form>
+            
             <form action="" method="get" class="main__createVisit displNone">
                 <div class="main__createVisit__dictor">
                     <label for="name">Chose your doctor</label>
