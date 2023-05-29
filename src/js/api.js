@@ -87,4 +87,11 @@ export const editCard = (editObj, cardId, token) => {
     })
         .then(response => response.json())
         .then(response => console.log(response))
+        .then((response) =>{
+                sectionCards.innerHTML = "";
+                getAllCardsApi(response)
+        } )
+            .catch(error => {
+                {console.error(error)}
+            })
 };
