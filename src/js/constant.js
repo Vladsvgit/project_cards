@@ -7,7 +7,7 @@ export const filterVisit = document.querySelector(".filterVisits");
 export const mainConternt = document.querySelector(".main");
 export const backGroundShadow = document.querySelector(".backGroundShadow");
 
-//export const token = localStorage.getItem("token");
+export const token = localStorage.getItem("token");
 
 // Create visit Items
 export const createVisitForm = document.querySelector(".main__createVisit");
