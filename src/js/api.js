@@ -67,6 +67,28 @@ export const getAllCards = (token) => {
     return allCards
 };
 
+export function getAllCardsApi() {
+    fetch("https://ajax.test-danit.com/api/v2/cards", {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        }
+    }).then(response => response.json())
+        .then((data) => {
+            console.log(data);
+            dataBase = [...data];
+            if (dataBase.length === 0) {
+                noCardsMessage("No items have been added")
+            } else {
+                renderAllCards(dataBase);
+            }
+        })
+        .catch(err => console.log(err))
+    // .catch(() => noCardsMessage("Error loading database"))
+
+}
+
 export const editCard = (editObj, cardId, token) => {
     fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
         method: 'PUT',

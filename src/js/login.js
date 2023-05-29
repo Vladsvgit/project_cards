@@ -6,6 +6,7 @@ export let dataBase = [];
 export function login() {
 
     loginWind.onclick = ((e) => {
+        console.log("Login BTN");
         const emailForm = document.querySelector('.login__email').value;
         const passwordForm = document.querySelector('.login__password').value;
         e.preventDefault();
