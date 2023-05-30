@@ -73,7 +73,7 @@ export const deleteCardApi = (cardId) => {
 //         .catch(err => console.log(err))
 // };
 
-export function getAllCardsApi() {
+export function getAllCardsApi(token) {
     fetch("https://ajax.test-danit.com/api/v2/cards", {
         method: 'GET',
         headers: {
