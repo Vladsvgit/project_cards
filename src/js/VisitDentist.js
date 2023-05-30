@@ -27,6 +27,7 @@ export class VisitDentist extends Visit {
                 <li class="title">Title : ${this.title}</li>
                 <li class="description">Description : ${this.description}</li>
                 <li class="urgency">Urgency : ${this.urgency}</li>
+                <li class="status">Status : ${this.status}</li>
                 <li class="lastVisitDate">Last visit date : ${this.lastVisitDate}</li>
               </ul>
             </li>
