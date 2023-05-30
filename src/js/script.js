@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
     loginWind.classList.add("displNone");
     filterVisit.classList.remove("displNone");
     loginBtn.classList.add("displNone");
-    getAllCardsApi();
+    getAllCardsApi(token);
   }
 });
 
@@ -61,7 +61,6 @@ filterVisit.addEventListener("submit", (e) => {
   filter(inputPurpose, selectedStatus, selectedUrgency);
   console.log(filterData);
   renderAllCards(filterData);
-  console.log(document.getElementById("173128"));
 
   if (filterData.length === 0) {
     noCardsMessage("There are no cards matching the search criteria");

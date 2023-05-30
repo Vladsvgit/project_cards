@@ -67,7 +67,7 @@ export const getAllCards = (token) => {
     return allCards
 };
 
-export function getAllCardsApi() {
+export function getAllCardsApi(token) {
     fetch("https://ajax.test-danit.com/api/v2/cards", {
         method: 'GET',
         headers: {

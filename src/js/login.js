@@ -61,6 +61,35 @@ export function login() {
     })
 }
 
+function siteLogin(e, email, password) {
+    fetch("https://ajax.test-danit.com/api/v2/cards/login", {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' })
+        // body: JSON.stringify({ email: 'augze@mailto.plus', password: 'qwe111' })
+        // body: JSON.stringify({ email: `${email}`, password: `${password}` })   //  конечное
+    })
+        .then(response => response.text())
+        .then(data => {
+            const token = data;
+            localStorage.setItem('token', token);
+            if (localStorage.getItem("token") !== "Incorrect username or password") {
+                createBtn.classList.remove("displNone");
+                unloginBtn.classList.remove("displNone");
+                loginWind.classList.add("displNone");
+                filterVisit.classList.remove("displNone");
+                backGroundShadow.classList.add("displNone");
+                getAllCardsApi(token)
+            } else {
+                alert("Incorrect username or password");
+                e.target.reset();
+            }
+        })
+        .catch(() => alert("Please login again"))
+};
+
 export function noCardsMessage(message) {
     const firstMessage = document.createElement("div");
     firstMessage.classList.add("main__message");

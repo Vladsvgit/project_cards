@@ -1,7 +1,7 @@
 import { Visit } from "./Visit.js";
 export class VisitDentist extends Visit {
-    constructor(title, description, urgency, fullName, status, lastVisitDate) {
-        super(title, description, urgency, fullName, status);
+    constructor(title, description, urgency, fullName, status, lastVisitDate, id) {
+        super(title, description, urgency, fullName, status, id);
         this.lastVisitDate = lastVisitDate
     }
     sendToServer() {
