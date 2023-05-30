@@ -43,7 +43,7 @@ function siteLogin(e, email, password) {
                 loginWind.classList.add("displNone");
                 filterVisit.classList.remove("displNone");
                 backGroundShadow.classList.add("displNone");
-                getAllCardsApi()
+                getAllCardsApi(token)
             } else {
                 alert("Incorrect username or password");
                 e.target.reset();
