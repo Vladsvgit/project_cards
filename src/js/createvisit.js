@@ -109,7 +109,6 @@ export const cancelVisitForm = () => {
     createVisitForm.classList.add("displNone");
 }
 
-<<<<<<< HEAD
 
 //................................................................
 export const sendVisit = (doctor) => {
@@ -128,8 +127,6 @@ export const sendVisit = (doctor) => {
 
 //................................................................
 
-=======
->>>>>>> parent of f02a432 (Working with api)
 // class Visit {
 //     constructor(title, description, urgency, fullName) {
 //         this.title = title;

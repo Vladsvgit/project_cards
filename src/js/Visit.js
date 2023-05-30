@@ -14,11 +14,13 @@ export class Visit {
     sendToServer() {
         createCardApi(Object.assign({}, this));
     }
-    
-    renderCard(){
+    // renderCard(){
 
-    }
+    // }
     deleteVisit(id) {
         deleteCardApi(id)
+
+
+
     }
 };

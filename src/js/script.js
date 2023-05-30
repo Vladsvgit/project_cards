@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import {
   loginBtn,
   createBtn,
@@ -26,14 +25,6 @@ import {getCurrentDoctor} from "./sendCard.js";
 //  import { VisitCardiologist} from "./VisitCardiologist.js";
 //  import { VisitDentist} from "./VisitDentist.js";
 //  import { VisitTherapist} from "./VisitTherapist.js";
-=======
-import { loginBtn, createBtn, loginWind, unloginBtn, filterVisit, chooseDoctor, createVisitForm, cancelVisitBtn, token, sectionCards } from "./constant.js";
-
-import { login, getAllCards, noCardsMessage } from "./login.js";
-import { renderCreateVisitForm, createVisit, cancelVisitForm } from "./createvisit.js";
-import { filter, filterData } from "./filter.js";
-import { renderAllCards } from "./renderCard.js";
->>>>>>> parent of f02a432 (Working with api)
 
 //Проверка на сохраненный токен
 document.addEventListener("DOMContentLoaded", () => {
@@ -141,3 +132,7 @@ sectionCards.addEventListener("click", (event) => {
     });
   }
 });
+
+
+
+

@@ -1,4 +1,7 @@
-// import { mail, pass } from "./login.js";
+import {sectionCards, token} from "./constant.js";
+import {renderAllCards} from "./renderCard.js";
+import {noCardsMessage} from "./login.js";
+export let dataBase = [];
 
 export const getToken = (mail, pass) => {
     fetch("https://ajax.test-danit.com/api/v2/cards/login", {
@@ -9,10 +12,10 @@ export const getToken = (mail, pass) => {
         body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' }) // добавить почту и пароль
     })
         .then(response => response.text())
-        // .then(token => console.log(token))
+        .then(token => console.log(token))
 };
 
-export const createCardApi = (cardObj, token) => {
+export const createCardApi = (cardObj) => {
     fetch("https://ajax.test-danit.com/api/v2/cards", {
         method: 'POST',
         headers: {
