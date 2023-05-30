@@ -39,15 +39,17 @@ export class VisitTherapist extends Visit {
     root.insertAdjacentHTML(
       "beforeend",
       `<form action="" class="main__createVisit send-form">
-          <div class="main__createVisit__doctor">
-              <label for="Doctor">Doctor </label>
-              <select class="main__createVisit__doctors">
-                  <option class="main__createVisit__doc" value="hide">-- Choose doctor --</option>
-                  <option class="main__createVisit__doc" value="Cardiologist" selected >Cardiologist</option>
-                  <option class="main__createVisit__doc" value="Dentist">Dentist</option>
-                  <option class="main__createVisit__doc" value="Therapist" selected>Therapist</option>
-              </select>
-          </div>
+      <div class="send-form__title">
+      <h1 ">Doctor : Therapist</h1>
+      </div>
+
+      <div>
+         <label for="status">Status:</label>
+         <select  name="status">
+              <option class="filterVisits__status__item" value="Open">Open</option>
+              <option class="filterVisits__status__item" value="Done">Done</option>
+         </select>
+      </div>
 
           <div class="main__createVisit__title ">
               <label for="title">Aim of visit:</label>
@@ -62,7 +64,6 @@ export class VisitTherapist extends Visit {
           <div class="main__createVisit__urgency ">
               <label for="Urgency">Urgency </label>
               <select class="createVisit__urgency__status" name="urgency">
-                  <option class="createVisit__urgency__item" value="No selected">-- Please select --</option>
                   <option class="createVisit__urgency__item" value="High">High</option>
                   <option class="createVisit__urgency__item" value="Normal">Normal</option>
                   <option class="createVisit__urgency__item" value="Low">Low</option>

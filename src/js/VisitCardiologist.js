@@ -1,17 +1,29 @@
 import { Visit } from "./Visit.js";
-import {sectionCards} from './constant.js';
+import { sectionCards } from "./constant.js";
 export class VisitCardiologist extends Visit {
-    constructor(doctor, title, description, urgency, fullName, pressure, bodyIndex, heartIll, age, status,  id) {
-        super(doctor, title, description, urgency, fullName,status , id);
-        this.pressure = pressure;
-        this.bodyIndex = bodyIndex;
-        this.heartIll = heartIll;
-        this.age = age
-    }
-    renderCard(){
-        sectionCards.insertAdjacentHTML(
-            "beforeend",
-            `<div class="block-card card" id="${this.id}">
+  constructor(
+    doctor,
+    title,
+    description,
+    urgency,
+    fullName,
+    pressure,
+    bodyIndex,
+    heartIll,
+    age,
+    status,
+    id
+  ) {
+    super(doctor, title, description, urgency, fullName, status, id);
+    this.pressure = pressure;
+    this.bodyIndex = bodyIndex;
+    this.heartIll = heartIll;
+    this.age = age;
+  }
+  renderCard() {
+    sectionCards.insertAdjacentHTML(
+      "beforeend",
+      `<div class="block-card card" id="${this.id}">
           <button class="block-cards__close btn">x</button>
         <ul>
         <li class="full-name">Fullname : ${this.fullName}</li>
@@ -33,28 +45,30 @@ export class VisitCardiologist extends Visit {
         <button class="block-cards__show btn">show more</button>
         <button class="block-cards__hide btn displNone">Show less</button>
         </div>
-        `);
-        // const deleteBtn = document.querySelector(`#${this.id} .block-cards__close`)
-        // deleteBtn.addEventListener('click', () => {
-        //     super.deleteVisit()
-        // });
+        `
+    );
+    // const deleteBtn = document.querySelector(`#${this.id} .block-cards__close`)
+    // deleteBtn.addEventListener('click', () => {
+    //     super.deleteVisit()
+    // });
+  }
 
-    }
-
-    renderSendForm(root) {
-        root.insertAdjacentHTML(
-            "beforeend",
-        `<form class="main__createVisit send-form">
-            <div class="main__createVisit__doctor">
-                <label for="Doctor">Doctor </label>
-                <select class="main__createVisit__doctors">
-                    <option class="main__createVisit__doc" value="hide">-- Choose doctor --</option>
-                    <option class="main__createVisit__doc" value="Cardiologist" selected >Cardiologist</option>
-                    <option class="main__createVisit__doc" value="Dentist">Dentist</option>
-                    <option class="main__createVisit__doc" value="Therapist">Therapist</option>
-                </select>
+  renderSendForm(root) {
+    root.insertAdjacentHTML(
+      "beforeend",
+      `<form class="main__createVisit send-form">
+            <div class="send-form__title">
+            <h1 ">Doctor : Cardiologist</h1>
             </div>
 
+            <div>
+               <label for="status">Status:</label>
+               <select  name="status">
+                    <option value="Open">Open</option>
+                    <option value="Done">Done</option>
+               </select>
+            </div>
+    
             <div class="main__createVisit__title ">
                 <label for="title">Aim of visit:</label>
                 <input type="text" name="title" value= "${this.title}" required>
@@ -68,7 +82,6 @@ export class VisitCardiologist extends Visit {
             <div class="main__createVisit__urgency ">
                 <label for="Urgency">Urgency </label>
                 <select class="createVisit__urgency__status" name="urgency">
-                    <option class="createVisit__urgency__item" value="No selected">-- Please select --</option>
                     <option class="createVisit__urgency__item" value="High">High</option>
                     <option class="createVisit__urgency__item" value="Normal">Normal</option>
                     <option class="createVisit__urgency__item" value="Low">Low</option>
@@ -105,7 +118,6 @@ export class VisitCardiologist extends Visit {
             </div>
 
         </form>`
-        )
-    }
+    );
+  }
 }
-
