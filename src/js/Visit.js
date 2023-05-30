@@ -12,7 +12,7 @@ export class Visit {
     }
 
     sendToServer() {
-        createCardApi(Object.assign({}, this));
+        createCardApi(this);
     }
     // renderCard(){
 

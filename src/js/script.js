@@ -128,6 +128,7 @@ sectionCards.addEventListener("click", (event) => {
 sectionCards.onclick = (e) => {
   if (e.target.classList.contains("block-cards__close")) {
     const card = e.target.closest(".block-card");
+    console.log(card);
     console.log(card.id);
     const visitDel = new Visit();
     visitDel.deleteVisit(card.id);

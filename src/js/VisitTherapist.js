@@ -19,6 +19,7 @@ export class VisitTherapist extends Visit {
                 <li class="title">Title : ${this.title}</li>
                 <li class="description">Description : ${this.description}</li>
                 <li class="urgency">Urgency : ${this.urgency}</li>
+                <li class="status">Status : ${this.status}</li>
                 <li class="age">Age : ${this.age}</li>
               </ul>
             </li>
