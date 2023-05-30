@@ -15,6 +15,10 @@ export const getToken = (mail, pass) => {
         .then(token => console.log(token))
 };
 
+
+
+
+
 export const createCardApi = (cardObj) => {
     fetch("https://ajax.test-danit.com/api/v2/cards", {
         method: 'POST',
@@ -91,6 +95,8 @@ export function getAllCardsApi() {
 
 }
 
+
+
 export const editCard = (editObj, cardId, token) => {
     fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
         method: 'PUT',
@@ -110,3 +116,16 @@ export const editCard = (editObj, cardId, token) => {
                 {console.error(error)}
             })
 };
+
+
+// function getToken(mail, pass) {
+//     return fetch("https://ajax.test-danit.com/api/v2/cards/login", {
+//         method: 'POST',
+//         headers: {
+//             'Content-Type': 'application/json'
+//         },
+//         body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' }) // добавить почту и пароль
+//     })
+//         .then(response => response.text())
+//         .then(token => console.log(token))
+// };
