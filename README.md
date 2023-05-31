@@ -3,6 +3,8 @@
 ## Name
 Step Project 3 - Cards
 
+## Login and pass
+email: 'AVY@gmail.com', password: 'step3AVY'
 ## Description
  Necessary to create a page where the Secretary can create cards describing scheduled doctor visits.
 
