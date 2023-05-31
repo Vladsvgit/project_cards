@@ -14,13 +14,7 @@ export class Visit {
     sendToServer() {
         createCardApi(this);
     }
-    // renderCard(){
-
-    // }
     deleteVisit(id) {
         deleteCardApi(id)
-
-
-
     }
 };

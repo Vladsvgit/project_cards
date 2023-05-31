@@ -135,5 +135,39 @@ sectionCards.onclick = (e) => {
   }
 };
 
+//................................................................
+//Drag-and-drop
+// работает криво
 
+
+// sectionCards.addEventListener("click", (event1) => {
+//   if (event1.target.closest(".block-card")) {
+//     let targetBlockCard = event1.target.closest(".block-card");
+
+//     targetBlockCard.ondragstart = function() {
+//       return false;
+//     };
+
+//     targetBlockCard.onmousedown = function (event) {
+//       let shiftX = event.clientX - targetBlockCard.getBoundingClientRect().left;
+//       let shiftY = event.clientY - targetBlockCard.getBoundingClientRect().top;
+//       targetBlockCard.style.position = 'absolute';
+//       targetBlockCard.style.zIndex = 1000;
+//       document.body.append(targetBlockCard);
+//       moveAt(event.pageX, event.pageY);
+//       function moveAt(pageX, pageY) {
+//         targetBlockCard.style.left = pageX - shiftX + 'px';
+//         targetBlockCard.style.top = pageY - shiftY + 'px';
+//       }
+//       function onMouseMove(event) {
+//         moveAt(event.pageX, event.pageY);
+//       }
+//       document.addEventListener('mousemove', onMouseMove);
+//       targetBlockCard.onmouseup = function() {
+//         document.removeEventListener('mousemove', onMouseMove);
+//         targetBlockCard.onmouseup = null;
+//       };
+//     };
+//   }
+// });
 
