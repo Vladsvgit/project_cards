@@ -7,11 +7,11 @@ import {
   chooseDoctor,
   createVisitForm,
   cancelVisitBtn,
-  token,
+  //token,
   sectionCards,
 } from "./constant.js";
 
-import { login, noCardsMessage } from "./login.js";
+import { login, noCardsMessage, token } from "./login.js";
 import {
   renderCreateVisitForm,
   createVisit,

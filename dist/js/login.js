@@ -1,7 +1,8 @@
-import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, backGroundShadow, token, loginBtnReg, sectionCards } from "./constant.js";
-import { getAllCardsApi } from "./api.js"
+import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, backGroundShadow, loginBtnReg, sectionCards } from "./constant.js";
+import { getAllCardsApi } from "./api.js";
 
 
+export let token;
 export const login = () => {
 
     // console.log("login");
@@ -33,8 +34,8 @@ function siteLogin(e, email, password) {
         .then(response => response.text())
         .then(data => {
             console.log(data);
-            const token = data;
-            console.log(token.length);
+            token = data;
+            console.log(data.length);
             localStorage.setItem('token', data);
             if (localStorage.getItem("token").length === 36) {
                 createBtn.classList.remove("displNone");

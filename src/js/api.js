@@ -1,6 +1,6 @@
-import { sectionCards, token } from "./constant.js";
+import { sectionCards } from "./constant.js";
 import { renderAllCards } from "./renderCard.js";
-import { noCardsMessage } from "./login.js";
+import { noCardsMessage, token } from "./login.js";
 export let dataBase = [];
 
 export const getToken = (mail, pass) => {

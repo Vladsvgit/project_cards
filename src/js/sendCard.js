@@ -1,8 +1,9 @@
 import { VisitCardiologist } from "./VisitCardiologist.js";
 import { VisitDentist } from "./VisitDentist.js";
 import { VisitTherapist } from "./VisitTherapist.js";
-import { token } from "./constant.js";
+//import { token } from "./constant.js";
 import { editCard } from "./api.js";
+import { token } from "./login.js"; 
 
 //................................................................
 function assignValuesFormCardiologist(obj) {
