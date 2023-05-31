@@ -1,5 +1,5 @@
 import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, backGroundShadow, token, loginBtnReg, sectionCards } from "./constant.js";
-import {getAllCardsApi} from "./api.js"
+import { getAllCardsApi } from "./api.js"
 
 
 export const login = () => {
@@ -28,12 +28,12 @@ function siteLogin(e, email, password) {
         },
         // body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' })
         // body: JSON.stringify({ email: 'augze@mailto.plus', password: 'qwe111' })
-       body: JSON.stringify({ email: `${email}`, password: `${password}` })   //  конечное
+        body: JSON.stringify({ email: `${email}`, password: `${password}` })   //  конечное
     })
         .then(response => response.text())
         .then(data => {
             console.log(data);
-            // token = data;
+            const token = data;
             console.log(token.length);
             localStorage.setItem('token', data);
             if (localStorage.getItem("token").length === 36) {
