@@ -9,7 +9,8 @@ export const getToken = (mail, pass) => {
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ email: "AVY@gmail.com", password: "step3AVY" }), // добавить почту и пароль
+    body: JSON.stringify({ email: `${email}`, password: `${password}` })
+    //body: JSON.stringify({ email: "AVY@gmail.com", password: "step3AVY" }), // добавить почту и пароль
   })
     .then((response) => response.text())
     .then((token) => console.log(token));

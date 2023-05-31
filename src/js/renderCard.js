@@ -1,8 +1,8 @@
-import {sectionCards} from './constant.js';
+import { sectionCards } from './constant.js';
 
-import {VisitCardiologist} from "./VisitCardiologist.js";
-import {VisitDentist} from "./VisitDentist.js";
-import {VisitTherapist} from "./VisitTherapist.js";
+import { VisitCardiologist } from "./VisitCardiologist.js";
+import { VisitDentist } from "./VisitDentist.js";
+import { VisitTherapist } from "./VisitTherapist.js";
 
 export function renderAllCards(arrayCards) {
   arrayCards.forEach((element) => {
@@ -20,16 +20,15 @@ export function renderAllCards(arrayCards) {
 }
 
 sectionCards.addEventListener("click", (e) => {
-      if (e.target.classList.contains("block-cards__show") || e.target.classList.contains("block-cards__hide")) {
-        let elem = e.target.closest(".block-card");
+  if (e.target.classList.contains("block-cards__show") || e.target.classList.contains("block-cards__hide")) {
+    let elem = e.target.closest(".block-card");
 
-        let subtext = elem.querySelector(".block-cards__sublist");
-        let btnMore = elem.querySelector(".block-cards__show");
-        let btnLess = elem.querySelector(".block-cards__hide");
+    let subtext = elem.querySelector(".block-cards__sublist");
+    let btnMore = elem.querySelector(".block-cards__show");
+    let btnLess = elem.querySelector(".block-cards__hide");
 
-        subtext.classList.toggle("displNone");
-        btnMore.classList.toggle("displNone");
-        btnLess.classList.toggle("displNone");
-      }
-    }
-)
+    subtext.classList.toggle("displNone");
+    btnMore.classList.toggle("displNone");
+    btnLess.classList.toggle("displNone");
+  }
+})

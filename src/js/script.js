@@ -21,7 +21,7 @@ import { filter, filterData } from "./filter.js";
 import { renderAllCards } from "./renderCard.js";
 import { getAllCardsApi, dataBase } from "./api.js";
 import { Visit } from "./Visit.js";
-import {getCurrentDoctor} from "./sendCard.js";
+import { getCurrentDoctor } from "./sendCard.js";
 //  import { VisitCardiologist} from "./VisitCardiologist.js";
 //  import { VisitDentist} from "./VisitDentist.js";
 //  import { VisitTherapist} from "./VisitTherapist.js";
@@ -134,6 +134,3 @@ sectionCards.onclick = (e) => {
     visitDel.deleteVisit(card.id);
   }
 };
-
-
-

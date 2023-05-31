@@ -1,23 +1,23 @@
 import { Visit } from "./Visit.js";
 import { sectionCards } from "./constant.js";
 export class VisitDentist extends Visit {
-  constructor(
-    doctor,
-    title,
-    description,
-    urgency,
-    fullName,
-    lastVisitDate,
-    status,
-    id
-  ) {
-    super(doctor, title, description, urgency, fullName, status, id);
-    this.lastVisitDate = lastVisitDate;
-  }
-  renderCard() {
-    sectionCards.insertAdjacentHTML(
-      "beforeend",
-      `<div class="block-card card" id="${this.id}">
+    constructor(
+        doctor,
+        title,
+        description,
+        urgency,
+        fullName,
+        lastVisitDate,
+        status,
+        id
+    ) {
+        super(doctor, title, description, urgency, fullName, status, id);
+        this.lastVisitDate = lastVisitDate;
+    }
+    renderCard() {
+        sectionCards.insertAdjacentHTML(
+            "beforeend",
+            `<div class="block-card card" id="${this.id}">
               <button class="block-cards__close btn">x</button>
             <ul>
             <li class="full-name">Fullname : ${this.fullName}</li>
@@ -37,19 +37,19 @@ export class VisitDentist extends Visit {
             <button class="block-cards__hide btn displNone">Show less</button>
             </div>
             `
-    );
-    const deleteBtn = document.querySelector(".block-cards__close");
+        );
+        const deleteBtn = document.querySelector(".block-cards__close");
 
-    // const deleteBtn = document.querySelector(`#${this.id} .block-cards__close`)
-    // deleteBtn.addEventListener('click', () => {
-    //     super.deleteVisit()
-    // });
-  }
+        // const deleteBtn = document.querySelector(`#${this.id} .block-cards__close`)
+        // deleteBtn.addEventListener('click', () => {
+        //     super.deleteVisit()
+        // });
+    }
 
-  renderSendForm(root) {
-    root.insertAdjacentHTML(
-      "beforeend",
-      `<form action="" class="main__createVisit send-form">
+    renderSendForm(root) {
+        root.insertAdjacentHTML(
+            "beforeend",
+            `<form action="" class="main__createVisit send-form">
       <div class="send-form__title">
       <h1 ">Doctor : Dentist</h1>
       </div>
@@ -96,6 +96,6 @@ export class VisitDentist extends Visit {
           </div>
 
       </form>`
-    );
-  }
+        );
+    }
 }

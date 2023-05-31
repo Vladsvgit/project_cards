@@ -1,13 +1,11 @@
-import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, createVisitForm, backGroundShadow, token, sectionCards } from "./constant.js";
-import { renderAllCards } from "./renderCard.js";
+import { createBtn, unloginBtn, filterVisit, loginWind, mainConternt, backGroundShadow, token, loginBtnReg, sectionCards } from "./constant.js";
 import {getAllCardsApi} from "./api.js"
 
 
 export const login = () => {
 
     // console.log("login");
-    loginWind.onclick = ((e) => {
-        // console.log("Submit");
+    loginBtnReg.onclick = ((e) => {
         const emailForm = document.querySelector('.login__email').value;
         const passwordForm = document.querySelector('.login__password').value;
         e.preventDefault();
@@ -23,21 +21,22 @@ export const login = () => {
 }
 
 function siteLogin(e, email, password) {
-    console.log();
     fetch("https://ajax.test-danit.com/api/v2/cards/login", {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' })
+        // body: JSON.stringify({ email: 'AVY@gmail.com', password: 'step3AVY' })
         // body: JSON.stringify({ email: 'augze@mailto.plus', password: 'qwe111' })
-        // body: JSON.stringify({ email: `${email}`, password: `${password}` })   //  конечное
+       body: JSON.stringify({ email: `${email}`, password: `${password}` })   //  конечное
     })
         .then(response => response.text())
         .then(data => {
-            const token = data;
-            localStorage.setItem('token', token);
-            if (localStorage.getItem("token") !== "Incorrect username or password") {
+            console.log(data);
+            // token = data;
+            console.log(token.length);
+            localStorage.setItem('token', data);
+            if (localStorage.getItem("token").length === 36) {
                 createBtn.classList.remove("displNone");
                 unloginBtn.classList.remove("displNone");
                 loginWind.classList.add("displNone");
