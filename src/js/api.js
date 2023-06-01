@@ -21,7 +21,7 @@ export const createCardApi = (cardObj) => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(cardObj),
   })
@@ -29,7 +29,7 @@ export const createCardApi = (cardObj) => {
     .then((response) => console.log(response))
     .then(() => {
       sectionCards.innerHTML = "";
-      getAllCardsApi(localStorage.getItem("token"));
+      getAllCardsApi(token);
     });
 };
 
@@ -37,13 +37,13 @@ export const deleteCardApi = (cardId) => {
   fetch(`https://ajax.test-danit.com/api/v2/cards/${cardId}`, {
     method: "DELETE",
     headers: {
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
     },
   })
     .then((response) => {
       if (response.ok) {
         sectionCards.innerHTML = "";
-        getAllCardsApi(localStorage.getItem("token"));
+        getAllCardsApi(token);
 
         // document.getElementById(`${cardId}`).remove();
       }
@@ -84,7 +84,7 @@ export const editCard = (editObj, cardId, token) => {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
+      Authorization: `Bearer ${token}`,
     },
     body: JSON.stringify(editObj),
   })
@@ -92,7 +92,7 @@ export const editCard = (editObj, cardId, token) => {
     .then((response) => console.log(response))
     .then((response) => {
       sectionCards.innerHTML = "";
-      getAllCardsApi(localStorage.getItem("token"));
+      getAllCardsApi(token);
     })
     .catch((error) => {
       {
