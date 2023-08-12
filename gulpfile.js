@@ -9,7 +9,14 @@ const clean = require("gulp-clean");
 const cleanCss = require("gulp-clean-css");
 const htmlMin = require('gulp-htmlmin');
 const fileInclude = require('gulp-file-include');
+var ghPages = require('gulp-gh-pages');
 
+
+// publications
+gulp.task('deploy', function() {
+  return gulp.src('./build/**/*')
+    .pipe(ghPages());
+});
 
 // Copy html files
 gulp.task("html", function (done) {
